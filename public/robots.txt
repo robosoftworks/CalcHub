@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# AdsBot needs explicit allow for Google ads quality crawl
+User-agent: AdsBot-Google
+Allow: /
+
+Sitemap: https://calchub.app/sitemap.xml
+Host: https://calchub.app
