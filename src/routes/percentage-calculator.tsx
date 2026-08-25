@@ -26,7 +26,7 @@ function PctPage() {
     <CalcLayout slug="percentage-calculator" title="Percentage Calculator" tagline="Solve any percentage problem instantly — % of, % change, % increase/decrease and discount." faqs={faqs} article={<Article />}>
       <div className="mb-5 flex flex-wrap gap-2">
         {TABS.map((t) => (
-          <button key={t} onClick={() => setTab(t)} className={`rounded-md px-3 py-2 text-sm font-semibold transition-smooth ${tab === t ? "bg-accent text-accent-foreground" : "border border-border bg-card hover:bg-secondary"}`}>{t}</button>
+          <button key={t} onClick={() => setTab(t)} aria-pressed={tab === t} className={`rounded-md px-3 py-2 text-sm font-semibold transition-smooth ${tab === t ? "bg-accent text-accent-foreground" : "border border-border bg-card hover:bg-secondary"}`}>{t}</button>
         ))}
       </div>
       {tab === "X% of Y" && <PercentOf />}

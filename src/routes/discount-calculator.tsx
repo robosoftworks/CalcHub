@@ -54,6 +54,7 @@ function DiscountPage() {
             <button
               key={m}
               onClick={() => setMode(m)}
+              aria-pressed={mode === m}
               className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-smooth ${
                 mode === m ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground"
               }`}

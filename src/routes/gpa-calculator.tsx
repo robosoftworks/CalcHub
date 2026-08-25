@@ -58,6 +58,7 @@ function GpaPage() {
             <button
               key={s}
               onClick={() => setScale(s)}
+              aria-pressed={scale === s}
               className={`rounded-md px-3 py-1.5 text-sm font-semibold transition-smooth ${
                 scale === s ? "bg-accent text-accent-foreground" : "border border-border bg-card hover:bg-secondary"
               }`}

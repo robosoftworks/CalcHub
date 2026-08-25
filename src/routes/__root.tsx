@@ -12,6 +12,7 @@ import { CookieConsent } from "@/components/site/CookieConsent";
 import { CommandPalette } from "@/components/site/CommandPalette";
 import { JsonLd } from "@/components/site/JsonLd";
 import { SITE_URL, absUrl } from "@/lib/site";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 function NotFoundComponent() {
   return (
@@ -96,8 +97,12 @@ function RootShell({ children }: { children: React.ReactNode }) {
   const promoteFonts =
     "document.querySelectorAll('link[rel=stylesheet][media=print]').forEach(function(l){l.media='all';});";
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Runs before hydration so the correct theme applies on first paint (no flash).
+            suppressHydrationWarning above is required because this script intentionally
+            makes the client's className differ from the server-rendered markup. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
         <noscript>
           <link rel="stylesheet" href={FONTS_HREF} />

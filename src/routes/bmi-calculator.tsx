@@ -62,6 +62,7 @@ function BmiPage() {
             <button
               key={u}
               onClick={() => setUnit(u)}
+              aria-pressed={unit === u}
               className={`rounded-md px-4 py-1.5 text-sm font-semibold capitalize transition-smooth ${
                 unit === u ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground"
               }`}

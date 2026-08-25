@@ -76,6 +76,7 @@ function UnitConverterPage() {
           <button
             key={c}
             onClick={() => selectCategory(c)}
+            aria-pressed={category === c}
             className={`rounded-md px-3 py-2 text-sm font-semibold transition-smooth ${category === c ? "bg-accent text-accent-foreground" : "border border-border bg-card hover:bg-secondary"}`}
           >
             {c}

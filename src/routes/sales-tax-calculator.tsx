@@ -53,6 +53,7 @@ function SalesTaxPage() {
           <button
             key={m}
             onClick={() => setMode(m)}
+            aria-pressed={mode === m}
             className={`rounded-md px-3 py-2 text-sm font-semibold transition-smooth ${mode === m ? "bg-accent text-accent-foreground" : "border border-border bg-card hover:bg-secondary"}`}
           >
             {m === "forward" ? "Price → total" : "Total → price"}

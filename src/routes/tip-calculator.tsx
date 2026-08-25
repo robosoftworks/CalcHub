@@ -67,6 +67,7 @@ function TipPage() {
               <button
                 key={p}
                 onClick={() => setTip(p)}
+                aria-pressed={tip === p}
                 className={`rounded-full border border-border px-3 py-1 text-xs font-semibold transition-smooth ${
                   tip === p ? "bg-accent text-accent-foreground" : "bg-card hover:border-accent"
                 }`}

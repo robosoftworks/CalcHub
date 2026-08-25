@@ -51,7 +51,7 @@ function FuelCostPage() {
       <div className="mx-auto max-w-md space-y-5">
         <div className="inline-flex rounded-lg border border-border bg-secondary p-1">
           {(["imperial", "metric"] as Unit[]).map((u) => (
-            <button key={u} onClick={() => setUnit(u)} className={`rounded-md px-4 py-1.5 text-sm font-semibold capitalize transition-smooth ${unit === u ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground"}`}>
+            <button key={u} onClick={() => setUnit(u)} aria-pressed={unit === u} className={`rounded-md px-4 py-1.5 text-sm font-semibold capitalize transition-smooth ${unit === u ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground"}`}>
               {u === "imperial" ? "Miles / MPG / Gallon" : "Km / L per 100km / Litre"}
             </button>
           ))}

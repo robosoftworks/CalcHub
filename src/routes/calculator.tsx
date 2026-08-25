@@ -103,6 +103,7 @@ function CalculatorPage() {
 
         <button
           onClick={() => setSci(!sci)}
+          aria-expanded={sci}
           className="mt-3 text-xs font-semibold text-muted-foreground hover:text-foreground"
         >
           {sci ? "Hide" : "Show"} scientific functions

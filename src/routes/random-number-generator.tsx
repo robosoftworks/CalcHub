@@ -89,7 +89,7 @@ function RngPage() {
 
         {error && <p className="rounded-md border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">{error}</p>}
 
-        {results.length > 0 && (
+        {results.length > 0 ? (
           <div className="rounded-xl bg-surface p-5 text-surface-foreground">
             <div className="text-xs uppercase tracking-wider text-surface-foreground/60">Result{results.length > 1 ? "s" : ""}</div>
             <div className="mt-2 flex flex-wrap gap-2">
@@ -103,6 +103,12 @@ function RngPage() {
               onReset={() => { setMin(1); setMax(100); setCount(5); setUnique(true); setResults([]); setError(null); }}
             />
           </div>
+        ) : (
+          !error && (
+            <p className="rounded-xl border border-dashed border-border bg-muted/40 p-5 text-center text-sm text-muted-foreground">
+              Set your range and click Generate to get random numbers.
+            </p>
+          )
         )}
       </div>
     </CalcLayout>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Menu, X, Search } from "lucide-react";
 import { CATEGORIES, calculators } from "@/lib/calculators";
 import { BrandLogo } from "./BrandLogo";
+import { ThemeToggle } from "./ThemeToggle";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -91,6 +92,8 @@ export function Header() {
           >
             <Search className="h-5 w-5" />
           </button>
+
+          <ThemeToggle />
 
           <button
             aria-label="Toggle menu"
