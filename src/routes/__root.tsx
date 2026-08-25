@@ -1,4 +1,11 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import {
+  Outlet,
+  Link,
+  createRootRoute,
+  HeadContent,
+  Scripts,
+} from "@tanstack/react-router";
+import { Analytics } from "@vercel/analytics/react";
 import appCss from "../styles.css?url";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -11,7 +18,9 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">
+          Page not found
+        </h2>
         <p className="mt-2 text-sm text-muted-foreground">
           The calculator you're looking for doesn't exist or has moved.
         </p>
@@ -48,16 +57,33 @@ export const Route = createRootRoute({
       { property: "og:site_name", content: "CalcHub" },
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: absUrl("/og-image.png") },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@calchub" },
+      { name: "twitter:image", content: absUrl("/og-image.png") },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
       { rel: "preload", as: "style", href: FONTS_HREF },
       { rel: "stylesheet", href: FONTS_HREF, media: "print" },
       { rel: "canonical", href: SITE_URL },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/favicon-32.png",
+      },
+      {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: "/apple-touch-icon.png",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -99,9 +125,10 @@ function RootComponent() {
     "@type": "Organization",
     name: "CalcHub",
     url: SITE_URL,
-    logo: absUrl("/favicon.ico"),
+    logo: absUrl("/favicon.svg"),
     sameAs: [],
-    description: "Free online calculators for students, professionals and everyday math.",
+    description:
+      "Free online calculators for students, professionals and everyday math.",
   };
   const siteLd = {
     "@context": "https://schema.org",
@@ -123,6 +150,7 @@ function RootComponent() {
       <Footer />
       <CookieConsent />
       <JsonLd data={[orgLd, siteLd]} />
+      <Analytics />
     </div>
   );
 }

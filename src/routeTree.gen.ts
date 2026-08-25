@@ -9,93 +9,28 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TipCalculatorRouteImport } from './routes/tip-calculator'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as SitemapRouteImport } from './routes/sitemap'
-import { Route as ProfitLossCalculatorRouteImport } from './routes/profit-loss-calculator'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as PercentageCalculatorRouteImport } from './routes/percentage-calculator'
-import { Route as LoanCalculatorRouteImport } from './routes/loan-calculator'
-import { Route as GpaCalculatorRouteImport } from './routes/gpa-calculator'
-import { Route as DiscountCalculatorRouteImport } from './routes/discount-calculator'
-import { Route as CurrencyConverterRouteImport } from './routes/currency-converter'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CalculatorRouteImport } from './routes/calculator'
-import { Route as BmiCalculatorRouteImport } from './routes/bmi-calculator'
-import { Route as AgeCalculatorRouteImport } from './routes/age-calculator'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AgeCalculatorRouteImport } from './routes/age-calculator'
+import { Route as BmiCalculatorRouteImport } from './routes/bmi-calculator'
+import { Route as CalculatorRouteImport } from './routes/calculator'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CurrencyConverterRouteImport } from './routes/currency-converter'
+import { Route as DiscountCalculatorRouteImport } from './routes/discount-calculator'
+import { Route as GpaCalculatorRouteImport } from './routes/gpa-calculator'
+import { Route as LoanCalculatorRouteImport } from './routes/loan-calculator'
+import { Route as PercentageCalculatorRouteImport } from './routes/percentage-calculator'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProfitLossCalculatorRouteImport } from './routes/profit-loss-calculator'
+import { Route as SitemapRouteImport } from './routes/sitemap'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as TipCalculatorRouteImport } from './routes/tip-calculator'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
-const TipCalculatorRoute = TipCalculatorRouteImport.update({
-  id: '/tip-calculator',
-  path: '/tip-calculator',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapRoute = SitemapRouteImport.update({
-  id: '/sitemap',
-  path: '/sitemap',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProfitLossCalculatorRoute = ProfitLossCalculatorRouteImport.update({
-  id: '/profit-loss-calculator',
-  path: '/profit-loss-calculator',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PercentageCalculatorRoute = PercentageCalculatorRouteImport.update({
-  id: '/percentage-calculator',
-  path: '/percentage-calculator',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoanCalculatorRoute = LoanCalculatorRouteImport.update({
-  id: '/loan-calculator',
-  path: '/loan-calculator',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GpaCalculatorRoute = GpaCalculatorRouteImport.update({
-  id: '/gpa-calculator',
-  path: '/gpa-calculator',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DiscountCalculatorRoute = DiscountCalculatorRouteImport.update({
-  id: '/discount-calculator',
-  path: '/discount-calculator',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CurrencyConverterRoute = CurrencyConverterRouteImport.update({
-  id: '/currency-converter',
-  path: '/currency-converter',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CalculatorRoute = CalculatorRouteImport.update({
-  id: '/calculator',
-  path: '/calculator',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BmiCalculatorRoute = BmiCalculatorRouteImport.update({
-  id: '/bmi-calculator',
-  path: '/bmi-calculator',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AgeCalculatorRoute = AgeCalculatorRouteImport.update({
-  id: '/age-calculator',
-  path: '/age-calculator',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -103,9 +38,74 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AgeCalculatorRoute = AgeCalculatorRouteImport.update({
+  id: '/age-calculator',
+  path: '/age-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BmiCalculatorRoute = BmiCalculatorRouteImport.update({
+  id: '/bmi-calculator',
+  path: '/bmi-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalculatorRoute = CalculatorRouteImport.update({
+  id: '/calculator',
+  path: '/calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CurrencyConverterRoute = CurrencyConverterRouteImport.update({
+  id: '/currency-converter',
+  path: '/currency-converter',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscountCalculatorRoute = DiscountCalculatorRouteImport.update({
+  id: '/discount-calculator',
+  path: '/discount-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GpaCalculatorRoute = GpaCalculatorRouteImport.update({
+  id: '/gpa-calculator',
+  path: '/gpa-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoanCalculatorRoute = LoanCalculatorRouteImport.update({
+  id: '/loan-calculator',
+  path: '/loan-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PercentageCalculatorRoute = PercentageCalculatorRouteImport.update({
+  id: '/percentage-calculator',
+  path: '/percentage-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfitLossCalculatorRoute = ProfitLossCalculatorRouteImport.update({
+  id: '/profit-loss-calculator',
+  path: '/profit-loss-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapRoute = SitemapRouteImport.update({
+  id: '/sitemap',
+  path: '/sitemap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TipCalculatorRoute = TipCalculatorRouteImport.update({
+  id: '/tip-calculator',
+  path: '/tip-calculator',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -266,102 +266,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/tip-calculator': {
-      id: '/tip-calculator'
-      path: '/tip-calculator'
-      fullPath: '/tip-calculator'
-      preLoaderRoute: typeof TipCalculatorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap': {
-      id: '/sitemap'
-      path: '/sitemap'
-      fullPath: '/sitemap'
-      preLoaderRoute: typeof SitemapRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/profit-loss-calculator': {
-      id: '/profit-loss-calculator'
-      path: '/profit-loss-calculator'
-      fullPath: '/profit-loss-calculator'
-      preLoaderRoute: typeof ProfitLossCalculatorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/percentage-calculator': {
-      id: '/percentage-calculator'
-      path: '/percentage-calculator'
-      fullPath: '/percentage-calculator'
-      preLoaderRoute: typeof PercentageCalculatorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/loan-calculator': {
-      id: '/loan-calculator'
-      path: '/loan-calculator'
-      fullPath: '/loan-calculator'
-      preLoaderRoute: typeof LoanCalculatorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/gpa-calculator': {
-      id: '/gpa-calculator'
-      path: '/gpa-calculator'
-      fullPath: '/gpa-calculator'
-      preLoaderRoute: typeof GpaCalculatorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/discount-calculator': {
-      id: '/discount-calculator'
-      path: '/discount-calculator'
-      fullPath: '/discount-calculator'
-      preLoaderRoute: typeof DiscountCalculatorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/currency-converter': {
-      id: '/currency-converter'
-      path: '/currency-converter'
-      fullPath: '/currency-converter'
-      preLoaderRoute: typeof CurrencyConverterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/calculator': {
-      id: '/calculator'
-      path: '/calculator'
-      fullPath: '/calculator'
-      preLoaderRoute: typeof CalculatorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/bmi-calculator': {
-      id: '/bmi-calculator'
-      path: '/bmi-calculator'
-      fullPath: '/bmi-calculator'
-      preLoaderRoute: typeof BmiCalculatorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/age-calculator': {
-      id: '/age-calculator'
-      path: '/age-calculator'
-      fullPath: '/age-calculator'
-      preLoaderRoute: typeof AgeCalculatorRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -371,11 +280,102 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/age-calculator': {
+      id: '/age-calculator'
+      path: '/age-calculator'
+      fullPath: '/age-calculator'
+      preLoaderRoute: typeof AgeCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bmi-calculator': {
+      id: '/bmi-calculator'
+      path: '/bmi-calculator'
+      fullPath: '/bmi-calculator'
+      preLoaderRoute: typeof BmiCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calculator': {
+      id: '/calculator'
+      path: '/calculator'
+      fullPath: '/calculator'
+      preLoaderRoute: typeof CalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/currency-converter': {
+      id: '/currency-converter'
+      path: '/currency-converter'
+      fullPath: '/currency-converter'
+      preLoaderRoute: typeof CurrencyConverterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discount-calculator': {
+      id: '/discount-calculator'
+      path: '/discount-calculator'
+      fullPath: '/discount-calculator'
+      preLoaderRoute: typeof DiscountCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gpa-calculator': {
+      id: '/gpa-calculator'
+      path: '/gpa-calculator'
+      fullPath: '/gpa-calculator'
+      preLoaderRoute: typeof GpaCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loan-calculator': {
+      id: '/loan-calculator'
+      path: '/loan-calculator'
+      fullPath: '/loan-calculator'
+      preLoaderRoute: typeof LoanCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/percentage-calculator': {
+      id: '/percentage-calculator'
+      path: '/percentage-calculator'
+      fullPath: '/percentage-calculator'
+      preLoaderRoute: typeof PercentageCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profit-loss-calculator': {
+      id: '/profit-loss-calculator'
+      path: '/profit-loss-calculator'
+      fullPath: '/profit-loss-calculator'
+      preLoaderRoute: typeof ProfitLossCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap': {
+      id: '/sitemap'
+      path: '/sitemap'
+      fullPath: '/sitemap'
+      preLoaderRoute: typeof SitemapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tip-calculator': {
+      id: '/tip-calculator'
+      path: '/tip-calculator'
+      fullPath: '/tip-calculator'
+      preLoaderRoute: typeof TipCalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
