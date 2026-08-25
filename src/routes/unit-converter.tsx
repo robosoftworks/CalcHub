@@ -77,7 +77,7 @@ function UnitConverterPage() {
             key={c}
             onClick={() => selectCategory(c)}
             aria-pressed={category === c}
-            className={`rounded-md px-3 py-2 text-sm font-semibold transition-smooth ${category === c ? "bg-accent text-accent-foreground" : "border border-border bg-card hover:bg-secondary"}`}
+            className={`rounded-md px-3 py-2 text-sm font-semibold transition-smooth ${category === c ? "bg-primary text-primary-foreground" : "border border-border bg-card hover:bg-secondary"}`}
           >
             {c}
           </button>
@@ -88,22 +88,22 @@ function UnitConverterPage() {
         <label className="block">
           <span className="mb-1.5 block text-sm font-semibold">From</span>
           <div className="flex gap-2">
-            <select value={from} onChange={(e) => setFrom(e.target.value)} className="rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent">
+            <select value={from} onChange={(e) => setFrom(e.target.value)} className="rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary">
               {unitOptions.map((u) => <option key={u}>{u}</option>)}
             </select>
-            <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} className="flex-1 rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent" />
+            <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} className="flex-1 rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary" />
           </div>
         </label>
         <button
           onClick={() => { setFrom(to); setTo(from); }}
           aria-label="Swap units"
-          className="mx-auto mb-1 grid h-10 w-10 place-items-center rounded-full border border-border bg-card transition-smooth hover:bg-accent hover:text-accent-foreground"
+          className="mx-auto mb-1 grid h-10 w-10 place-items-center rounded-full border border-border bg-card transition-smooth hover:bg-primary hover:text-primary-foreground"
         >
           <ArrowLeftRight className="h-4 w-4" />
         </button>
         <label className="block">
           <span className="mb-1.5 block text-sm font-semibold">To</span>
-          <select value={to} onChange={(e) => setTo(e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent">
+          <select value={to} onChange={(e) => setTo(e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary">
             {unitOptions.map((u) => <option key={u}>{u}</option>)}
           </select>
         </label>
@@ -111,7 +111,7 @@ function UnitConverterPage() {
 
       <div className="mt-6 rounded-2xl bg-surface p-6 text-surface-foreground">
         <div className="text-xs uppercase tracking-wider text-surface-foreground/60">{amount || "0"} {from} =</div>
-        <div className="mt-1 font-display text-4xl font-bold text-accent md:text-5xl">{display} {to}</div>
+        <div className="mt-1 font-display text-4xl font-bold text-primary md:text-5xl">{display} {to}</div>
         <ResultActions
           text={`${amount} ${from} = ${display} ${to}`}
           title="Unit conversion"

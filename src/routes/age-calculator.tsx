@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
@@ -61,15 +61,15 @@ function AgePage() {
   return (
     <CalcLayout slug="age-calculator" title="Age Calculator" tagline="Find your exact age in years, months, days — and how long until your next birthday." faqs={faqs} article={<Article />}>
       <div className="grid gap-4 md:grid-cols-2">
-        <Field label="Date of birth"><input type="date" value={dob} onChange={(e) => setDob(e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent" /></Field>
-        <Field label="Calculate age on"><input type="date" value={target} onChange={(e) => setTarget(e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent" /></Field>
+        <Field label="Date of birth"><input type="date" value={dob} onChange={(e) => setDob(e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary" /></Field>
+        <Field label="Calculate age on"><input type="date" value={target} onChange={(e) => setTarget(e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary" /></Field>
       </div>
 
       {result ? (
         <>
           <div className="mt-6 rounded-2xl bg-surface p-6 text-surface-foreground">
             <div className="text-xs uppercase tracking-wider text-surface-foreground/60">Your age</div>
-            <div className="mt-1 font-display text-4xl font-bold text-accent md:text-5xl">
+            <div className="mt-1 font-display text-4xl font-bold text-primary md:text-5xl">
               {result.years} <span className="text-lg text-surface-foreground/60">years</span>{" "}
               {result.months} <span className="text-lg text-surface-foreground/60">months</span>{" "}
               {result.days} <span className="text-lg text-surface-foreground/60">days</span>
@@ -118,17 +118,39 @@ function Article() {
     <>
       <h2>How an age calculator works</h2>
       <p>
-        At first glance, calculating age looks trivial: subtract one year from another. But months have
-        different lengths, leap years insert an extra day, and time zones complicate things further. A
-        proper age calculator uses real calendar arithmetic to give you an exact result in years, months
-        and days — plus useful totals like the number of days you’ve been alive.
+        "How old am I" looks like one subtraction, but calendars are irregular by design — months run from
+        28 to 31 days, and roughly every four years February gets an extra one. A calculator that just
+        subtracts years will be wrong by a day or two on a huge number of date pairs, which is exactly the
+        kind of error that's invisible until it isn't.
       </p>
-      <h3>The math behind it</h3>
+      <h3>The math, step by step</h3>
       <p>
-        First we compute the year and month difference between your date of birth and the target date.
-        If the target day-of-month is earlier than your birth day-of-month, we “borrow” a month, just like
-        long subtraction. The remaining days are calculated using the previous month’s length, which
-        respects February’s leap-year rule.
+        We start with the year and month difference between the birth date and today. If today's
+        day-of-month is <em>earlier</em> than the birth day-of-month, we "borrow" a month — exactly the way
+        you'd borrow a ten in long subtraction — and use the length of the <em>previous</em> calendar month
+        to work out the remaining days. This naturally respects February's length in both regular and leap
+        years, without any special-case code for leap years at all.
+      </p>
+      <h3>Worked example</h3>
+      <p>
+        Someone born March 3, 1991, checking their exact age on August 25, 2026: the year difference is 35,
+        and since August 25 comes after March 3 in the calendar, no borrowing is needed — the month
+        difference is a clean 5 months, and the day difference is 22 days. Exact age:{" "}
+        <strong>35 years, 5 months, 22 days</strong>.
+      </p>
+      <p>
+        Now flip the target date: checking the same birth date on February 1, 2027 — a month before that
+        year's birthday — the day-of-month (1) is earlier than the birth day (3), so we borrow a month,
+        pulling from January's 31 days: 31 − 2 = 29 days. That leaves 35 years and 10 months (one short of a
+        full 11, since we borrowed one), plus those 29 days: exact age is{" "}
+        <strong>35 years, 10 months, 29 days</strong>.
+      </p>
+      <h3>Common mistake: leap-day birthdays</h3>
+      <p>
+        If you were born on February 29, most calendars simply don't have that date in a non-leap year. This
+        calculator treats a Feb 29 birthday as falling on February 28 in non-leap years for the purposes of
+        "days until next birthday," rather than skipping the birthday entirely or miscounting — worth
+        knowing if you're one of the roughly 1 in 1,461 people born on a leap day.
       </p>
       <h3>Common uses</h3>
       <ul>
@@ -140,14 +162,19 @@ function Article() {
       <h3>Different age systems around the world</h3>
       <p>
         Most countries use the Western system: you turn N on the Nth anniversary of your birth. South
-        Korea historically used a system where you’re born at age 1 and gain a year every January 1 —
-        a tradition that was officially retired in 2023. Some Asian astrology systems also count
-        differently. Our calculator uses the universal Western convention.
+        Korea historically used a system where you're born at age 1 and gain a year every January 1 —
+        a tradition that was officially retired in 2023. Our calculator uses the universal Western
+        convention.
       </p>
-      <h3>Why this matters</h3>
+      <h3>Related tools</h3>
       <p>
-        Getting your age exactly right matters for legal documents, medical records and even fitness goals
-        (where age determines target heart rate). With one click, this tool removes the mental math.
+        For counting the days between any two dates that <em>aren't</em> a birthdate — a notice period, a
+        project deadline, a countdown to an event — the <Link to="/date-calculator">Date Calculator</Link>{" "}
+        is the more general version of the same underlying math used here.
+      </p>
+      <p>
+        See also our existing deep-dive:{" "}
+        <Link to="/blog/$slug" params={{ slug: "age-calculator-explained" }}>Age Calculator Explained (With Real Examples)</Link>.
       </p>
     </>
   );

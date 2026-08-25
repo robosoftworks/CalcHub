@@ -88,7 +88,7 @@ function Contact() {
 
           <div className="mt-8 space-y-3">
             <div className="flex items-center gap-3 rounded-xl border border-border bg-card p-4">
-              <div className="grid h-10 w-10 place-items-center rounded-lg bg-accent text-accent-foreground">
+              <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary text-primary-foreground">
                 <Mail className="h-4 w-4" />
               </div>
               <div>
@@ -97,7 +97,7 @@ function Contact() {
               </div>
             </div>
             <div className="flex items-center gap-3 rounded-xl border border-border bg-card p-4">
-              <div className="grid h-10 w-10 place-items-center rounded-lg bg-accent text-accent-foreground">
+              <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary text-primary-foreground">
                 <MessageCircle className="h-4 w-4" />
               </div>
               <div>
@@ -116,7 +116,7 @@ function Contact() {
         >
           {sent ? (
             <div className="text-center">
-              <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-accent text-2xl text-accent-foreground">
+              <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-primary text-2xl text-primary-foreground">
                 ✓
               </div>
               <h2 className="mt-3 text-xl font-bold">Message sent</h2>
@@ -134,7 +134,7 @@ function Contact() {
                     value={name}
                     maxLength={100}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </label>
                 <label className="block">
@@ -146,7 +146,7 @@ function Contact() {
                     value={email}
                     maxLength={255}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </label>
                 <label className="block">
@@ -158,14 +158,14 @@ function Contact() {
                     value={msg}
                     maxLength={1000}
                     onChange={(e) => setMsg(e.target.value)}
-                    className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </label>
                 {error && <p className="text-sm text-destructive">{error}</p>}
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full rounded-md bg-accent px-4 py-3 text-sm font-bold text-accent-foreground hover:opacity-90 disabled:opacity-60"
+                  className="w-full rounded-md bg-primary px-4 py-3 text-sm font-bold text-primary-foreground hover:opacity-90 disabled:opacity-60"
                 >
                   {submitting ? "Sending…" : "Send message"}
                 </button>

@@ -115,7 +115,7 @@ function CalculatorPage() {
               <button
                 key={b}
                 onClick={() => press(b)}
-                className="rounded-lg border border-border bg-secondary px-3 py-3 text-sm font-semibold hover:bg-accent hover:text-accent-foreground"
+                className="rounded-lg border border-border bg-secondary px-3 py-3 text-sm font-semibold hover:bg-primary hover:text-primary-foreground"
               >{b}</button>
             ))}
           </div>
@@ -131,7 +131,7 @@ function CalculatorPage() {
                 key={b}
                 onClick={() => press(b)}
                 className={`rounded-lg px-3 py-4 text-lg font-semibold transition-smooth active:scale-95 ${
-                  isEq ? "bg-accent text-accent-foreground hover:opacity-90" :
+                  isEq ? "bg-primary text-primary-foreground hover:opacity-90" :
                   isAc ? "bg-destructive/10 text-destructive hover:bg-destructive/20" :
                   isOp ? "bg-surface text-surface-foreground hover:opacity-90" :
                   "border border-border bg-card hover:bg-secondary"

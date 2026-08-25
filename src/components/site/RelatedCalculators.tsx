@@ -41,7 +41,7 @@ export function RelatedCalculators({
             <Link
               key={c.slug}
               to={c.path}
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-sm font-semibold transition-smooth hover:-translate-y-0.5 hover:border-accent hover:shadow-elegant"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-sm font-semibold transition-smooth hover:-translate-y-0.5 hover:border-primary hover:shadow-elegant"
             >
               <span aria-hidden>{c.emoji}</span>
               <span>{c.title}</span>
@@ -54,9 +54,9 @@ export function RelatedCalculators({
             <Link
               key={c.slug}
               to={c.path}
-              className="group flex items-start gap-3 rounded-xl border border-border bg-card p-4 transition-smooth hover:-translate-y-0.5 hover:border-accent hover:shadow-elegant"
+              className="group flex items-start gap-3 rounded-xl border border-border bg-card p-4 transition-smooth hover:-translate-y-0.5 hover:border-primary hover:shadow-elegant"
             >
-              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-accent text-lg text-accent-foreground">
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-primary text-lg text-primary-foreground">
                 {c.emoji}
               </div>
               <div className="min-w-0">

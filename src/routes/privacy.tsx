@@ -25,7 +25,7 @@ function Privacy() {
         <h2>Cookies</h2>
         <p>We use a small number of cookies to remember your preferences (e.g. your cookie-consent choice) and to enable third-party services such as advertising and analytics.</p>
         <h2>Advertising</h2>
-        <p>CalcHub displays advertisements served by third-party providers including Google AdSense. These providers may use cookies and web beacons to deliver personalised ads based on your browsing activity. You can opt out of personalised advertising via Google’s <ExternalLink href="https://www.google.com/settings/ads" label="Google ad settings" className="text-accent hover:underline">ad settings</ExternalLink>.</p>
+        <p>CalcHub displays advertisements served by third-party providers including Google AdSense. These providers may use cookies and web beacons to deliver personalised ads based on your browsing activity. You can opt out of personalised advertising via Google’s <ExternalLink href="https://www.google.com/settings/ads" label="Google ad settings" className="text-primary hover:underline">ad settings</ExternalLink>.</p>
         <h2>Third-party services</h2>
         <p>The Currency Converter retrieves live exchange rates from a third-party API. No personal information is sent in those requests.</p>
         <h2>Data retention</h2>

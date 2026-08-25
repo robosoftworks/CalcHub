@@ -33,7 +33,7 @@ function BlogIndex() {
               key={p.slug}
               to="/blog/$slug"
               params={{ slug: p.slug }}
-              className="group rounded-2xl border border-border bg-card p-6 transition-smooth hover:-translate-y-1 hover:border-accent hover:shadow-elegant"
+              className="group rounded-2xl border border-border bg-card p-6 transition-smooth hover:-translate-y-1 hover:border-primary hover:shadow-elegant"
             >
               <div className="text-xs uppercase tracking-wider text-muted-foreground">{p.date} · {calc?.title}</div>
               <h2 className="mt-2 text-xl font-bold leading-snug">{p.title}</h2>

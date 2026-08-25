@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
@@ -60,7 +60,7 @@ function TipPage() {
           <input
             type="range" min={0} max={30} value={tip}
             onChange={(e) => setTip(Number(e.target.value))}
-            className="w-full accent-[oklch(0.89_0.18_100)]"
+            className="w-full primary-[oklch(0.89_0.18_100)]"
           />
           <div className="mt-2 flex flex-wrap gap-2">
             {[10, 15, 18, 20, 25].map((p) => (
@@ -69,7 +69,7 @@ function TipPage() {
                 onClick={() => setTip(p)}
                 aria-pressed={tip === p}
                 className={`rounded-full border border-border px-3 py-1 text-xs font-semibold transition-smooth ${
-                  tip === p ? "bg-accent text-accent-foreground" : "bg-card hover:border-accent"
+                  tip === p ? "bg-primary text-primary-foreground" : "bg-card hover:border-primary"
                 }`}
               >{p}%</button>
             ))}
@@ -125,23 +125,45 @@ function Article() {
     <>
       <h2>How the tip calculator works</h2>
       <p>
-        The tip calculator multiplies your bill by your chosen tip percentage, adds it to the original amount,
-        and then divides the total by the number of people in your group. It’s the fastest way to settle a
-        restaurant bill or split a takeaway between friends.
+        Splitting a bill fairly seems trivial until the bill actually arrives — service charges, tax, and
+        uneven orders all complicate what should be simple multiplication. This calculator applies your
+        chosen tip percentage to the amount you specify, then divides across your group.
       </p>
-      <h3>Tipping etiquette around the world</h3>
-      <ul>
-        <li><strong>USA & Canada:</strong> 15–20% standard, 10% poor service, 25% exceptional</li>
-        <li><strong>UK & Ireland:</strong> 10–12.5% if a service charge isn’t already included</li>
-        <li><strong>Western Europe:</strong> Round up the bill or add 5–10%</li>
-        <li><strong>Japan & South Korea:</strong> Tipping is not customary and can be considered rude</li>
-        <li><strong>Australia & New Zealand:</strong> Optional; 10% is generous</li>
-      </ul>
-      <h3>How to split a bill fairly</h3>
+      <h3>The one decision that actually matters: pre-tax or post-tax?</h3>
       <p>
-        Even splits are easy — just divide the total by the headcount. For unequal splits (someone ordered the
-        steak, someone the salad), tally each person’s items, add the same tip percentage to each subtotal,
-        and you’re done.
+        In the US, standard etiquette is to tip on the <strong>pre-tax</strong> subtotal, not the
+        tax-inclusive total — tax isn't a service the server provided, so tipping on it slightly overpays
+        without either side really noticing. It's a small difference on any single bill, but it's the single
+        most common point of confusion people have about "how much should I actually tip."
+      </p>
+      <h3>Worked example</h3>
+      <p>
+        A dinner bill comes to $86.40 (pre-tax) for a table of 5, with 8% sales tax added, bringing the
+        printed total to $93.31. Tipping 20% on the correct pre-tax base: 86.40 × 0.20 ={" "}
+        <strong>$17.28</strong>, for a grand total of $110.59 — <strong>$22.12 each</strong> if the group of
+        5 splits evenly. Tip on the post-tax total instead and you'd add $18.66 — a small but real $1.38
+        overpay that compounds across a year of dining out.
+      </p>
+      <h3>Tipping norms aren't universal</h3>
+      <ul>
+        <li><strong>USA & Canada:</strong> 15–20% standard, 25%+ for exceptional service</li>
+        <li><strong>UK & Ireland:</strong> 10–12.5% if a service charge isn't already included</li>
+        <li><strong>Japan & South Korea:</strong> Tipping is not customary and can come across as awkward or even rude</li>
+        <li><strong>Western Europe:</strong> Round up the bill or add 5–10%</li>
+      </ul>
+      <h3>Splitting unequal orders</h3>
+      <p>
+        For an even split, divide the tipped total by headcount. When orders differ significantly, tally
+        each person's items first, then apply the same tip percentage to each subtotal individually — a much
+        fairer outcome than dividing everything by headcount when one person ordered a $12 salad and another
+        ordered a $40 steak.
+      </p>
+      <p>
+        For working out the tax portion precisely on a receipt, the{" "}
+        <Link to="/sales-tax-calculator">Sales Tax Calculator</Link> handles the reverse calculation (finding
+        the pre-tax price from a tax-included total) used in this article's example. If you're comparing a
+        discounted menu price, the <Link to="/discount-calculator">Discount Calculator</Link> is the natural
+        next stop.
       </p>
     </>
   );

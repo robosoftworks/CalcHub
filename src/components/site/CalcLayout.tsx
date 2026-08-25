@@ -65,7 +65,7 @@ export function CalcLayout({ slug, title, tagline, children, article, faqs }: Pr
               {faqs.map((f, i) => (
                 <details key={i} className="group p-4 open:bg-muted/40">
                   <summary className="cursor-pointer list-none text-sm font-semibold marker:hidden">
-                    <span className="mr-2 text-accent-foreground">▸</span>{f.q}
+                    <span className="mr-2 text-primary-foreground">▸</span>{f.q}
                   </summary>
                   <p className="mt-3 text-sm text-muted-foreground">{f.a}</p>
                 </details>
@@ -91,7 +91,7 @@ export function CalcLayout({ slug, title, tagline, children, article, faqs }: Pr
                 <li key={c.slug}>
                   <Link
                     to={c.path}
-                    activeProps={{ className: "bg-accent text-accent-foreground" }}
+                    activeProps={{ className: "bg-primary text-primary-foreground" }}
                     className="block rounded-md px-2.5 py-1.5 text-sm hover:bg-secondary"
                   >
                     {c.emoji} {c.title}

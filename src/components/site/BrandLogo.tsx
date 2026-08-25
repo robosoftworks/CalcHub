@@ -5,7 +5,7 @@ type Props = {
 };
 
 /**
- * CalcHub wordmark — "Calc" in plain text + "Hub" inside a rounded accent box.
+ * CalcHub wordmark — "Calc" in plain text + "Hub" inside a rounded primary box.
  * Inspired by classic two-tone wordmarks. Pure CSS/SVG (no image asset).
  */
 export function BrandLogo({ className, variant = "dark" }: Props) {
@@ -15,7 +15,7 @@ export function BrandLogo({ className, variant = "dark" }: Props) {
       className={`inline-flex items-center font-display font-extrabold leading-none tracking-tight text-2xl ${className ?? ""}`}
     >
       <span className={calcColor}>Calc</span>
-      <span className="ml-1 inline-flex items-center rounded-lg bg-accent px-2 py-1 text-accent-foreground">
+      <span className="ml-1 inline-flex items-center rounded-lg bg-primary px-2 py-1 text-primary-foreground">
         Hub
       </span>
     </span>

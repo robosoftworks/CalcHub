@@ -49,7 +49,7 @@ function WordCounterPage() {
         onChange={(e) => setText(e.target.value)}
         rows={10}
         placeholder="Paste or type your text here…"
-        className="w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+        className="w-full rounded-md border border-border bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
       />
 
       <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">

@@ -65,7 +65,7 @@ function PostPage() {
             <div className="text-xs uppercase tracking-wider text-muted-foreground">Try the tool</div>
             <div className="text-lg font-bold">{calc.emoji} {calc.title}</div>
           </div>
-          <Link to={calc.path} className="rounded-md bg-accent px-4 py-2 text-sm font-bold text-accent-foreground hover:opacity-90">Open calculator →</Link>
+          <Link to={calc.path} className="rounded-md bg-primary px-4 py-2 text-sm font-bold text-primary-foreground hover:opacity-90">Open calculator →</Link>
         </div>
       )}
 
@@ -170,6 +170,60 @@ const bodies: Record<string, () => React.ReactElement> = {
       </ul>
       <h2>Try it</h2>
       <p>Use our <Link to="/currency-converter">Currency Converter</Link> for the live mid-market rate before any transaction.</p>
+    </>
+  ),
+  "how-to-calculate-your-car-loan-emi-before-you-sign": () => (
+    <>
+      <p>Dealership financing is designed to be agreed to quickly, in a room built for it. The single best defense is knowing your real numbers before you sit down — not the monthly payment they'll offer, the one you calculate yourself.</p>
+      <h2>Start with the EMI formula, not the dealer's number</h2>
+      <p>Every EMI is <code>P × r × (1 + r)ⁿ ÷ ((1 + r)ⁿ − 1)</code>, where P is what you're borrowing, r is your monthly rate, and n is the number of months. You don't need to compute this by hand — that's what the <Link to="/loan-calculator">Loan / EMI Calculator</Link> is for — but you should walk in already knowing roughly what to expect, so a dealer's "great deal" gets compared against your own number, not just their pitch.</p>
+      <h2>Worked example: a $28,000 truck</h2>
+      <p>At 7.2% APR over 6 years (72 months), the EMI comes out to roughly <strong>$480/month</strong>, with total interest of about <strong>$6,564</strong> over the life of the loan. Ask the dealer for the same loan at 5 years instead: the EMI rises to about $557/month, but total interest drops to roughly $5,430 — <strong>$1,135 cheaper</strong>, for about $77 more a month.</p>
+      <h2>The trap: "we can get your payment down to $400"</h2>
+      <p>When a monthly number is the only thing being negotiated, the lever being pulled is almost always tenure, not rate. A lower EMI achieved by stretching the loan longer is not a discount — it's more total interest, delivered in smaller monthly doses. Always ask "what's the total I'll pay?" alongside "what's the monthly payment?"</p>
+      <h2>If you're financing a vehicle priced in a different currency</h2>
+      <p>Importing a vehicle, or financing across a border, adds a second variable: exchange-rate risk on your down payment or any lump-sum transfer. The <Link to="/currency-converter">Currency Converter</Link> shows you the real mid-market rate — check it before wiring a deposit, since banks routinely quote 1–4% worse than the rate you'll see here, and on a large deposit that's real money before your loan has even started.</p>
+      <h2>Before you sign</h2>
+      <ol>
+        <li>Get the price, rate, and tenure as three separate numbers — never accept a single bundled "monthly payment" quote.</li>
+        <li>Run it through the <Link to="/loan-calculator">Loan / EMI Calculator</Link> yourself and compare at least two tenures.</li>
+        <li>If a deposit crosses currencies, check the mid-market rate on the <Link to="/currency-converter">Currency Converter</Link> first.</li>
+        <li>Ask specifically for the total interest paid over the full term — not just the EMI.</li>
+      </ol>
+    </>
+  ),
+  "bmi-vs-body-fat-which-number-actually-matters": () => (
+    <>
+      <p>Two people can have the exact same BMI and completely different health profiles. Here's why that happens, and which number is actually worth paying attention to for your goals.</p>
+      <h2>The core problem with BMI</h2>
+      <p>BMI is <code>weight ÷ height²</code> — full stop. It has no way to distinguish 20 lbs of muscle from 20 lbs of fat, because it never looks at composition at all, only total mass relative to height. That's not a flaw exactly — BMI was designed in the 1830s as a population-level statistical tool, not an individual diagnostic — but it's routinely used as if it were the latter.</p>
+      <h2>A concrete comparison</h2>
+      <p>Take two men, both 5'10" (178 cm) and 190 lbs (86 kg). Both get a BMI of <strong>27.2</strong> — solidly in the "Overweight" range on our <Link to="/bmi-calculator">BMI Calculator</Link>. One of them is a recreational runner carrying visible muscle and roughly 14% body fat. The other is largely sedentary at roughly 28% body fat. Identical BMI. Meaningfully different cardiovascular and metabolic risk. BMI cannot see the difference; it was never built to.</p>
+      <h2>Where body fat % fills the gap</h2>
+      <p>The <Link to="/body-fat-calculator">Body Fat % Calculator</Link> uses the U.S. Navy circumference method — waist, neck, and (for women) hip measurements — to estimate actual composition instead of just mass. It's not lab-grade precise (nothing short of a DEXA scan or hydrostatic weighing really is), but it's a genuinely different signal than BMI, and for most people it's a better proxy for "how much of my weight is fat."</p>
+      <h2>So which one should you actually track?</h2>
+      <ul>
+        <li><strong>BMI</strong> is fastest and fine for a rough population-level check, or tracking a broad trend over months.</li>
+        <li><strong>Body fat %</strong> is more informative for anyone strength training, losing weight while preserving muscle, or with an athletic build that skews BMI upward.</li>
+        <li>Neither number tells you what to do about your weight — that's where the <Link to="/calorie-calculator">Calorie / TDEE Calculator</Link> comes in, translating your stats into an actual daily calorie target based on your goal and activity level.</li>
+      </ul>
+      <h2>The practical takeaway</h2>
+      <p>Use BMI as a 10-second sanity check, use body fat % if you want a real read on composition, and use TDEE if you're actually trying to change either number. Tracking all three together, and re-checking every few weeks rather than daily, gives a far more honest picture than any single reading.</p>
+    </>
+  ),
+  "stacked-discounts-dont-add-up-the-way-you-think": () => (
+    <>
+      <p>"Take an extra 20% off already-reduced items" sounds like it should combine with an existing 30% discount to make 50% off. It doesn't — and the actual math costs shoppers real money at checkout every day.</p>
+      <h2>Why discounts multiply, not add</h2>
+      <p>Each discount applies to whatever price is left after the previous one — not to the original price. Two discounts of 20% and 30% don't combine to 50% off; they combine to <code>1 − (0.80 × 0.70) = 44%</code> off. The gap between "sounds like 50%" and "is actually 44%" is small on a $20 item, but on a $1,200 furniture purchase it's a real $72 difference.</p>
+      <h2>Worked example</h2>
+      <p>A $340 jacket is marked 25% off, then an in-store coupon takes another 15% off the already-discounted price. First discount: $340 × 0.75 = $255. Second discount applies to $255, not $340: $255 × 0.85 = <strong>$216.75</strong>. The combined discount is <code>(340 − 216.75) / 340 = 36.25%</code> — not the 40% you'd get by naively adding 25% + 15%. Run either step through the <Link to="/discount-calculator">Discount Calculator</Link> to check your own stacked deals before checkout.</p>
+      <h2>Now add sales tax — order matters here too</h2>
+      <p>Tax is calculated on whatever the final price is after all discounts are applied, not on the original sticker price. Continuing the example: at 7% sales tax, the $216.75 final price becomes $231.92 — tax of $15.17. If a cashier mistakenly calculated tax on the original $340 instead, you'd be overcharged by nearly $9. The <Link to="/sales-tax-calculator">Sales Tax Calculator</Link> can quickly check whether a receipt's tax line matches the discounted subtotal it should be based on.</p>
+      <h2>A second common trap: percentage-off vs. dollars-off comparisons</h2>
+      <p>"$50 off" and "15% off" aren't directly comparable without doing the math — $50 off a $200 item (25% effective discount) beats 15% off the same item ($30), but $50 off a $600 item (8.3% effective) loses to 15% off ($90). Convert everything to a dollar amount before comparing two differently-formatted deals.</p>
+      <h2>The takeaway</h2>
+      <p>Multiply successive discount multipliers together (never add the percentages), apply tax last, and always convert "X% off" and "$Y off" into the same units before deciding which deal is actually better. When in doubt, the <Link to="/discount-calculator">Discount Calculator</Link> and <Link to="/sales-tax-calculator">Sales Tax Calculator</Link> take about 10 seconds to settle it definitively.</p>
     </>
   ),
 };

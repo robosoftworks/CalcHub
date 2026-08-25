@@ -69,12 +69,12 @@ function BodyFatPage() {
         <div className="flex flex-wrap gap-3">
           <div className="inline-flex rounded-lg border border-border bg-secondary p-1">
             {(["metric", "imperial"] as Unit[]).map((u) => (
-              <button key={u} onClick={() => setUnit(u)} aria-pressed={unit === u} className={`rounded-md px-4 py-1.5 text-sm font-semibold capitalize transition-smooth ${unit === u ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground"}`}>{u}</button>
+              <button key={u} onClick={() => setUnit(u)} aria-pressed={unit === u} className={`rounded-md px-4 py-1.5 text-sm font-semibold capitalize transition-smooth ${unit === u ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}>{u}</button>
             ))}
           </div>
           <div className="inline-flex rounded-lg border border-border bg-secondary p-1">
             {(["male", "female"] as const).map((s) => (
-              <button key={s} onClick={() => setSex(s)} aria-pressed={sex === s} className={`rounded-md px-4 py-1.5 text-sm font-semibold capitalize transition-smooth ${sex === s ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground"}`}>{s}</button>
+              <button key={s} onClick={() => setSex(s)} aria-pressed={sex === s} className={`rounded-md px-4 py-1.5 text-sm font-semibold capitalize transition-smooth ${sex === s ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}>{s}</button>
             ))}
           </div>
         </div>
@@ -92,7 +92,7 @@ function BodyFatPage() {
           <div className="rounded-xl bg-surface p-5 text-center text-surface-foreground">
             <div className="text-xs uppercase tracking-wider text-surface-foreground/60">Estimated body fat</div>
             <div className="mt-1 text-5xl font-bold tracking-tight">{result.toFixed(1)}%</div>
-            <div className="mt-2 text-sm font-semibold text-accent">{classify(result, sex)}</div>
+            <div className="mt-2 text-sm font-semibold text-primary">{classify(result, sex)}</div>
             <ResultActions
               text={`My estimated body fat is ${result.toFixed(1)}% (${classify(result, sex)})`}
               title="Body fat estimate"

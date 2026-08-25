@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
@@ -53,17 +53,17 @@ function CurrencyPage() {
       <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-end">
         <Field label="From">
           <div className="flex gap-2">
-            <select value={from} onChange={(e) => setFrom(e.target.value)} className="rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent">
+            <select value={from} onChange={(e) => setFrom(e.target.value)} className="rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary">
               {POPULAR.map((c) => <option key={c}>{c}</option>)}
             </select>
-            <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} className="flex-1 rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent" />
+            <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} className="flex-1 rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary" />
           </div>
         </Field>
-        <button onClick={() => { setFrom(to); setTo(from); }} aria-label="Swap currencies" className="mx-auto mb-1 grid h-10 w-10 place-items-center rounded-full border border-border bg-card transition-smooth hover:bg-accent hover:text-accent-foreground">
+        <button onClick={() => { setFrom(to); setTo(from); }} aria-label="Swap currencies" className="mx-auto mb-1 grid h-10 w-10 place-items-center rounded-full border border-border bg-card transition-smooth hover:bg-primary hover:text-primary-foreground">
           <ArrowLeftRight className="h-4 w-4" />
         </button>
         <Field label="To">
-          <select value={to} onChange={(e) => setTo(e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent">
+          <select value={to} onChange={(e) => setTo(e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary">
             {POPULAR.map((c) => <option key={c}>{c}</option>)}
           </select>
         </Field>
@@ -77,7 +77,7 @@ function CurrencyPage() {
         ) : (
           <>
             <div className="text-xs uppercase tracking-wider text-surface-foreground/60">{amount} {from} =</div>
-            <div className="mt-1 font-display text-4xl font-bold text-accent md:text-5xl">
+            <div className="mt-1 font-display text-4xl font-bold text-primary md:text-5xl">
               {converted.toLocaleString(undefined, { maximumFractionDigits: 4 })} {to}
             </div>
             <div className="mt-1 text-sm text-surface-foreground/70">1 {from} = {rate?.toFixed(4)} {to} · updated {updated}</div>
@@ -107,16 +107,32 @@ function Article() {
     <>
       <h2>How a currency converter works</h2>
       <p>
-        Every minute, trillions of dollars worth of currency change hands in the global foreign-exchange
-        market. The price of converting one currency to another — the exchange rate — is set by supply,
-        demand, central-bank policy and a hundred other factors. A currency converter takes the latest
-        published “mid-market” rate and applies it to your amount.
+        The number you see quoted here is the <strong>mid-market rate</strong> — the exact midpoint between
+        what large banks buy and sell a currency for on the wholesale forex market. It's the "true" rate,
+        refreshed constantly as trillions of dollars change hands globally. It is also, almost never, the
+        rate you'll actually be charged.
       </p>
-      <h3>Mid-market rates vs the rate you’ll actually get</h3>
+      <h3>Why your real rate is different</h3>
       <p>
-        The mid-market rate is the midpoint between the buy and sell prices in the wholesale forex market.
-        It’s the “true” exchange rate you see on Google, Reuters or Bloomberg. Banks, card networks and
-        money-transfer apps add a margin on top — usually 0.5%–4% — and that’s how they make money.
+        Banks, card networks, and money-transfer apps don't give you the mid-market rate — they quote their
+        own rate, which bakes in a margin on top. That margin is effectively invisible unless you compare it
+        to the real mid-market number, which is exactly what this converter shows you.
+      </p>
+      <h3>Worked example</h3>
+      <p>
+        Say you're sending <strong>$3,200</strong> abroad and, for illustration, the mid-market rate on this
+        pair is <strong>56.00</strong> units of the destination currency per dollar. At the true rate, your
+        transfer is worth <strong>179,200</strong>. But your bank's transfer desk quotes you 54.50 instead —
+        a rate that looks close, but isn't. At 54.50, the same $3,200 becomes <strong>174,400</strong> —{" "}
+        <strong>4,800 units (roughly $85) quietly gone</strong>, without a single explicit "fee" line item
+        anywhere on the receipt.
+      </p>
+      <h3>Common mistake: comparing fees, not rates</h3>
+      <p>
+        Most people shopping for the "cheapest" way to send money compare the advertised transfer{" "}
+        <em>fee</em> and stop there — a $0-fee transfer with a bad exchange rate is often more expensive
+        overall than a $5-fee transfer at a rate close to mid-market. Always calculate what you'd get at the
+        mid-market rate first, then compare every option — fee included — against that baseline.
       </p>
       <h3>How to use this converter</h3>
       <ol>
@@ -125,24 +141,20 @@ function Article() {
         <li>Read the converted value, the per-unit rate and the timestamp.</li>
         <li>Use the swap button to flip the direction instantly.</li>
       </ol>
-      <h3>When to convert</h3>
-      <p>
-        Exchange rates fluctuate constantly. For small everyday amounts the difference is negligible, but
-        for large transfers (paying tuition abroad, buying property, importing inventory), even a 1%
-        difference can be hundreds or thousands of dollars. Many travellers and freelancers use online
-        services that get closer to the mid-market rate than traditional banks.
-      </p>
-      <h3>Hidden fees to watch for</h3>
+      <h3>Using this converter well</h3>
       <ul>
-        <li><strong>Spread</strong>: the markup over the mid-market rate. Often invisible.</li>
-        <li><strong>Wire fees</strong>: a fixed amount per international transfer.</li>
-        <li><strong>Receiving-bank fees</strong>: charged on the destination side.</li>
-        <li><strong>ATM fees</strong>: both your bank and the foreign ATM operator can charge.</li>
+        <li>Check the mid-market rate here <em>before</em> you get a quote from a bank or app, so you have a real number to negotiate against or compare.</li>
+        <li>For large transfers — tuition, property, importing inventory — even a 1–2% spread is real money; for splitting a dinner bill abroad, it's noise.</li>
+        <li>
+          If you're pricing goods or services across borders, the{" "}
+          <Link to="/profit-loss-calculator">Profit &amp; Loss Calculator</Link> is useful for folding an
+          exchange-rate margin into your cost basis.
+        </li>
       </ul>
-      <h3>A note on accuracy</h3>
       <p>
-        This tool is great for quotes, planning and rough estimates. For trade settlements or accounting,
-        always confirm the rate at the moment of the actual transaction with your bank or processor.
+        See also: <Link to="/blog/$slug" params={{ slug: "how-to-calculate-your-car-loan-emi-before-you-sign" }}>How to Calculate Your Car Loan EMI Before You Sign</Link>,
+        which covers exchange-rate risk when financing a vehicle priced in a foreign currency, and the{" "}
+        <Link to="/loan-calculator">Loan / EMI Calculator</Link>.
       </p>
     </>
   );

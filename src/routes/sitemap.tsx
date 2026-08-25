@@ -46,9 +46,9 @@ function SitemapPage() {
           {calculators.map((c) => {
             const related = calculators.filter((r) => r.slug !== c.slug).slice(0, 3);
             return (
-              <article key={c.slug} className="group rounded-2xl border border-border bg-card p-5 transition-smooth hover:-translate-y-0.5 hover:border-accent hover:shadow-elegant">
+              <article key={c.slug} className="group rounded-2xl border border-border bg-card p-5 transition-smooth hover:-translate-y-0.5 hover:border-primary hover:shadow-elegant">
                 <Link to={c.path} className="flex items-start gap-3">
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-accent text-xl text-accent-foreground">{c.emoji}</div>
+                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary text-xl text-primary-foreground">{c.emoji}</div>
                   <div className="min-w-0">
                     <h3 className="font-bold leading-tight">{c.title}</h3>
                     <p className="mt-1 text-xs text-muted-foreground line-clamp-2">{c.description}</p>
@@ -62,7 +62,7 @@ function SitemapPage() {
                       <li key={r.slug}>
                         <Link
                           to={r.path}
-                          className="inline-flex items-center gap-1 rounded-full border border-border bg-background px-2.5 py-1 text-xs font-medium hover:border-accent hover:bg-accent hover:text-accent-foreground"
+                          className="inline-flex items-center gap-1 rounded-full border border-border bg-background px-2.5 py-1 text-xs font-medium hover:border-primary hover:bg-primary hover:text-primary-foreground"
                         >
                           <span aria-hidden>{r.emoji}</span> {r.title.replace(" Calculator", "").replace(" Converter", "")}
                         </Link>
@@ -104,7 +104,7 @@ function SitemapPage() {
                 {calc && (
                   <Link
                     to={calc.path}
-                    className="inline-flex shrink-0 items-center gap-1 rounded-full bg-accent px-3 py-1.5 text-xs font-bold text-accent-foreground hover:opacity-90"
+                    className="inline-flex shrink-0 items-center gap-1 rounded-full bg-primary px-3 py-1.5 text-xs font-bold text-primary-foreground hover:opacity-90"
                   >
                     Try {calc.emoji} {calc.title.replace(" Calculator", "").replace(" Converter", "")}
                     <ArrowRight className="h-3 w-3" />
@@ -131,7 +131,7 @@ function SitemapPage() {
             <Link
               key={p.to}
               to={p.to}
-              className="group flex items-center justify-between rounded-xl border border-border bg-card p-4 transition-smooth hover:border-accent hover:bg-secondary"
+              className="group flex items-center justify-between rounded-xl border border-border bg-card p-4 transition-smooth hover:border-primary hover:bg-secondary"
             >
               <div>
                 <div className="font-semibold">{p.t}</div>

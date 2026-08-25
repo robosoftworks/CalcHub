@@ -57,12 +57,12 @@ function CaloriePage() {
         <div className="flex flex-wrap gap-3">
           <div className="inline-flex rounded-lg border border-border bg-secondary p-1">
             {(["metric", "imperial"] as Unit[]).map((u) => (
-              <button key={u} onClick={() => setUnit(u)} aria-pressed={unit === u} className={`rounded-md px-4 py-1.5 text-sm font-semibold capitalize transition-smooth ${unit === u ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground"}`}>{u}</button>
+              <button key={u} onClick={() => setUnit(u)} aria-pressed={unit === u} className={`rounded-md px-4 py-1.5 text-sm font-semibold capitalize transition-smooth ${unit === u ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}>{u}</button>
             ))}
           </div>
           <div className="inline-flex rounded-lg border border-border bg-secondary p-1">
             {(["male", "female"] as const).map((s) => (
-              <button key={s} onClick={() => setSex(s)} aria-pressed={sex === s} className={`rounded-md px-4 py-1.5 text-sm font-semibold capitalize transition-smooth ${sex === s ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground"}`}>{s}</button>
+              <button key={s} onClick={() => setSex(s)} aria-pressed={sex === s} className={`rounded-md px-4 py-1.5 text-sm font-semibold capitalize transition-smooth ${sex === s ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}>{s}</button>
             ))}
           </div>
         </div>
@@ -90,7 +90,7 @@ function CaloriePage() {
               <button
                 key={a.label}
                 onClick={() => setActivity(a.factor)}
-                className={`flex items-center justify-between rounded-lg border px-3 py-2 text-left text-sm transition-smooth ${activity === a.factor ? "border-accent bg-accent text-accent-foreground" : "border-border bg-card hover:bg-secondary"}`}
+                className={`flex items-center justify-between rounded-lg border px-3 py-2 text-left text-sm transition-smooth ${activity === a.factor ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card hover:bg-secondary"}`}
               >
                 <span className="font-semibold">{a.label}</span>
                 <span className="text-xs opacity-80">{a.hint}</span>

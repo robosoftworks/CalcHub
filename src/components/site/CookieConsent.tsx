@@ -28,7 +28,7 @@ export function CookieConsent() {
     >
       <p className="text-sm">
         We use cookies to improve your experience and serve relevant ads. By using CalcHub you agree to our{" "}
-        <Link to="/privacy" className="text-accent underline">Privacy Policy</Link>.
+        <Link to="/privacy" className="text-primary underline">Privacy Policy</Link>.
       </p>
       <div className="mt-3 flex gap-2 sm:mt-0">
         <button
@@ -39,7 +39,7 @@ export function CookieConsent() {
         </button>
         <button
           onClick={() => persist("accepted")}
-          className="rounded-md bg-accent px-3 py-2 text-xs font-bold text-accent-foreground hover:opacity-90"
+          className="rounded-md bg-primary px-3 py-2 text-xs font-bold text-primary-foreground hover:opacity-90"
         >
           Accept
         </button>

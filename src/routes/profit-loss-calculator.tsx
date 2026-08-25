@@ -31,13 +31,13 @@ function PnlPage() {
   return (
     <CalcLayout slug="profit-loss-calculator" title="Profit & Loss Calculator" tagline="Enter cost price and selling price — get profit/loss, margin and markup instantly." faqs={faqs} article={<Article />}>
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Cost price"><input type="number" value={cost} onChange={(e) => setCost(e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent" /></Field>
-        <Field label="Selling price"><input type="number" value={sell} onChange={(e) => setSell(e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent" /></Field>
+        <Field label="Cost price"><input type="number" value={cost} onChange={(e) => setCost(e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary" /></Field>
+        <Field label="Selling price"><input type="number" value={sell} onChange={(e) => setSell(e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary" /></Field>
       </div>
 
       <div className="mt-6 rounded-2xl bg-surface p-6 text-surface-foreground">
         <div className="text-xs uppercase tracking-wider text-surface-foreground/60">{isProfit ? "Profit" : "Loss"}</div>
-        <div className={`mt-1 font-display text-4xl font-bold md:text-5xl ${isProfit ? "text-accent" : "text-destructive"}`}>
+        <div className={`mt-1 font-display text-4xl font-bold md:text-5xl ${isProfit ? "text-primary" : "text-destructive"}`}>
           {isProfit ? "+" : ""}{diff.toFixed(2)}
         </div>
         <div className="mt-1 text-sm text-surface-foreground/70">{isProfit ? "Markup" : "Loss"} of {Math.abs(pct).toFixed(2)}% on cost</div>

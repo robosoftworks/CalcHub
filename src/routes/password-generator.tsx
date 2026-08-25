@@ -116,7 +116,7 @@ function PasswordGeneratorPage() {
             <span className="text-xs font-semibold text-muted-foreground">Length</span>
             <span className="text-sm font-bold">{length}</span>
           </div>
-          <input type="range" min={6} max={64} value={length} onChange={(e) => setLength(Number(e.target.value))} className="w-full accent-[oklch(0.89_0.18_100)]" />
+          <input type="range" min={6} max={64} value={length} onChange={(e) => setLength(Number(e.target.value))} className="w-full primary-[oklch(0.89_0.18_100)]" />
         </label>
 
         <div className="grid grid-cols-2 gap-3 text-sm">
@@ -135,7 +135,7 @@ function PasswordGeneratorPage() {
 function Toggle({ label, checked, onChange }: { label: string; checked: boolean; onChange: (v: boolean) => void }) {
   return (
     <label className="flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 hover:bg-secondary">
-      <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} className="h-4 w-4 accent-[oklch(0.89_0.18_100)]" />
+      <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} className="h-4 w-4 primary-[oklch(0.89_0.18_100)]" />
       <span>{label}</span>
     </label>
   );

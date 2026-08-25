@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
@@ -64,7 +64,7 @@ function BmiPage() {
               onClick={() => setUnit(u)}
               aria-pressed={unit === u}
               className={`rounded-md px-4 py-1.5 text-sm font-semibold capitalize transition-smooth ${
-                unit === u ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground"
+                unit === u ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
               }`}
             >{u}</button>
           ))}
@@ -160,14 +160,28 @@ function Article() {
     <>
       <h2>How the BMI calculator works</h2>
       <p>
-        Body Mass Index is the most widely used screening tool for weight category. Our calculator lets you
-        enter your numbers in metric (cm/kg) or imperial (ft/in/lbs) units and instantly classifies the result
-        according to World Health Organization guidelines.
+        BMI (Body Mass Index) reduces you to two numbers — height and weight — because it was never designed
+        as a personal diagnostic tool. It was built in the 1830s by a Belgian statistician to describe{" "}
+        <em>population averages</em>, not individuals. That history matters for how much weight (no pun
+        intended) you should put on your own result.
       </p>
-      <h3>The BMI formula</h3>
+      <h3>The formula, in plain language</h3>
+      <pre className="rounded-md bg-muted p-3 text-sm">{`Metric:   BMI = weight (kg) ÷ height² (m²)
+Imperial: BMI = (weight in lbs ÷ height² in inches) × 703`}</pre>
       <p>
-        In metric units, BMI = <code>weight (kg) ÷ height² (m²)</code>. In imperial units, multiply by 703:
-        <code> BMI = (weight in lbs ÷ height² in inches) × 703</code>.
+        Dividing by height <em>squared</em> — not just height — is the key design choice. Weight tends to
+        scale with the volume of a body, which roughly scales with height cubed, not height. Squaring height
+        instead of cubing it was a deliberate simplification to keep the math usable by hand in the 1800s,
+        and it's why BMI systematically over-estimates "fatness" in very tall people and under-estimates it
+        in very short people.
+      </p>
+      <h3>Worked example</h3>
+      <p>
+        A person who is 5'11" (180 cm) and weighs 210 lbs (95 kg): BMI = 95 ÷ (1.80 × 1.80) = 95 ÷ 3.24 ={" "}
+        <strong>29.3</strong>, landing just inside the "Overweight" band (25–29.9). Now compare a second
+        person at the exact same height and weight who trains for powerlifting four times a week and carries
+        visibly low body fat. Same inputs, same "29.3," radically different health picture — because BMI has
+        no way to see the difference between muscle and fat.
       </p>
       <h3>What your number means</h3>
       <ul>
@@ -176,11 +190,28 @@ function Article() {
         <li><strong>25 – 29.9</strong> — overweight</li>
         <li><strong>30 and above</strong> — obese</li>
       </ul>
-      <h3>Limitations of BMI</h3>
+      <h3>Common mistake: treating BMI as a diagnosis</h3>
       <p>
-        BMI is a simple screening tool — it doesn’t measure body fat directly and doesn’t account for muscle
-        mass, bone density, age or ethnicity. Always combine BMI with other indicators like waist circumference
-        and a doctor’s assessment for a complete picture of health.
+        The single biggest misread of BMI is using it as a stand-alone verdict on health. It was built to
+        flag population-level trends, not to judge an individual body composition. Athletes, older adults
+        losing muscle mass, and people carrying weight mostly as muscle are the groups BMI misleads most
+        often.
+      </p>
+      <h3>Getting a fuller picture</h3>
+      <ul>
+        <li>
+          The <Link to="/body-fat-calculator">Body Fat % Calculator</Link> uses waist and neck measurements
+          to estimate actual body composition — a genuinely different signal than BMI.
+        </li>
+        <li>
+          Pair your BMI with the <Link to="/calorie-calculator">Calorie / TDEE Calculator</Link> if your
+          goal is a specific weight target, since that tool accounts for your activity level, not just your
+          size.
+        </li>
+      </ul>
+      <p>
+        See also: <Link to="/blog/$slug" params={{ slug: "bmi-vs-body-fat-which-number-actually-matters" }}>BMI vs Body Fat %: Which Number Actually Matters?</Link>{" "}
+        for a deeper comparison of when each metric is the right one to trust.
       </p>
     </>
   );

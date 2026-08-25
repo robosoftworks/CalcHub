@@ -86,7 +86,7 @@ function SalaryPage() {
       faqs={faqs}
       article={<Article />}
     >
-      <div className="mb-4 rounded-md border border-accent/30 bg-accent/10 p-3 text-xs text-foreground/80">
+      <div className="mb-4 rounded-md border border-primary/30 bg-primary/10 p-3 text-xs text-foreground/80">
         Estimate only — uses simplified 2024 US federal brackets and a flat rate you set for state/local tax. Not tax advice.
       </div>
 

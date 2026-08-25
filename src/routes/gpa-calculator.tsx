@@ -60,7 +60,7 @@ function GpaPage() {
               onClick={() => setScale(s)}
               aria-pressed={scale === s}
               className={`rounded-md px-3 py-1.5 text-sm font-semibold transition-smooth ${
-                scale === s ? "bg-accent text-accent-foreground" : "border border-border bg-card hover:bg-secondary"
+                scale === s ? "bg-primary text-primary-foreground" : "border border-border bg-card hover:bg-secondary"
               }`}
             >{s}</button>
           ))}
@@ -80,13 +80,13 @@ function GpaPage() {
           <tbody className="divide-y divide-border">
             {rows.map((r, i) => (
               <tr key={i}>
-                <td className="p-2"><input value={r.subject} onChange={(e) => update(i, "subject", e.target.value)} placeholder="e.g. Algebra" className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent" /></td>
+                <td className="p-2"><input value={r.subject} onChange={(e) => update(i, "subject", e.target.value)} placeholder="e.g. Algebra" className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary" /></td>
                 <td className="p-2">
-                  <select value={r.grade} onChange={(e) => update(i, "grade", e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent">
+                  <select value={r.grade} onChange={(e) => update(i, "grade", e.target.value)} className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
                     {Object.keys(grades).map((g) => <option key={g}>{g}</option>)}
                   </select>
                 </td>
-                <td className="p-2"><input type="number" min="0" max="10" value={r.credits} onChange={(e) => update(i, "credits", e.target.value)} className="w-24 rounded-md border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent" /></td>
+                <td className="p-2"><input type="number" min="0" max="10" value={r.credits} onChange={(e) => update(i, "credits", e.target.value)} className="w-24 rounded-md border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary" /></td>
                 <td className="p-2 text-right">
                   <button onClick={() => removeRow(i)} className="rounded-md p-2 text-muted-foreground hover:bg-destructive/10 hover:text-destructive" aria-label="Remove row"><Trash2 className="h-4 w-4" /></button>
                 </td>
@@ -105,7 +105,7 @@ function GpaPage() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <div className="text-xs uppercase tracking-wider text-surface-foreground/60">Your GPA</div>
-            <div className="mt-1 font-display text-5xl font-bold text-accent">{gpa.toFixed(2)}</div>
+            <div className="mt-1 font-display text-5xl font-bold text-primary">{gpa.toFixed(2)}</div>
             <div className="mt-1 text-sm text-surface-foreground/70">on a {scale} scale · {totalCredits} credits</div>
           </div>
           <div className="text-right text-sm text-surface-foreground/80">

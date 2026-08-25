@@ -328,4 +328,28 @@ export const blogPosts = [
     related: "currency-converter",
     date: "2025-03-04",
   },
+  {
+    slug: "how-to-calculate-your-car-loan-emi-before-you-sign",
+    title: "How to Calculate Your Car Loan EMI Before You Sign",
+    excerpt:
+      "Dealership financing is built to be agreed to quickly. Know your real EMI, total interest and exchange-rate exposure before you sit down.",
+    related: "loan-calculator",
+    date: "2026-08-05",
+  },
+  {
+    slug: "bmi-vs-body-fat-which-number-actually-matters",
+    title: "BMI vs Body Fat %: Which Number Actually Matters?",
+    excerpt:
+      "Two people can share the exact same BMI and completely different health profiles. Here's why, and which number to actually track.",
+    related: "bmi-calculator",
+    date: "2026-08-12",
+  },
+  {
+    slug: "stacked-discounts-dont-add-up-the-way-you-think",
+    title: "Stacked Discounts Don't Add Up the Way You Think",
+    excerpt:
+      "\"An extra 20% off already-reduced items\" doesn't combine the way it sounds. The real math, worked out.",
+    related: "discount-calculator",
+    date: "2026-08-19",
+  },
 ];

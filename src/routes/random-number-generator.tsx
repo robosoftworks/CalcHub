@@ -75,14 +75,14 @@ function RngPage() {
           <label className="block"><span className="mb-1 block text-xs font-semibold text-muted-foreground">Maximum</span><input type="number" value={max} onChange={(e) => setMax(Number(e.target.value))} className={cls()} /></label>
           <label className="block"><span className="mb-1 block text-xs font-semibold text-muted-foreground">How many numbers</span><input type="number" min={1} value={count} onChange={(e) => setCount(Number(e.target.value))} className={cls()} /></label>
           <label className="flex items-center gap-2 self-end rounded-md border border-border bg-card px-3 py-2 text-sm hover:bg-secondary">
-            <input type="checkbox" checked={unique} onChange={(e) => setUnique(e.target.checked)} className="h-4 w-4 accent-[oklch(0.89_0.18_100)]" />
+            <input type="checkbox" checked={unique} onChange={(e) => setUnique(e.target.checked)} className="h-4 w-4 primary-[oklch(0.89_0.18_100)]" />
             No duplicates
           </label>
         </div>
 
         <button
           onClick={generate}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-accent px-4 py-3 text-sm font-bold text-accent-foreground hover:opacity-90"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-3 text-sm font-bold text-primary-foreground hover:opacity-90"
         >
           <RefreshCw className="h-4 w-4" /> Generate
         </button>
@@ -94,7 +94,7 @@ function RngPage() {
             <div className="text-xs uppercase tracking-wider text-surface-foreground/60">Result{results.length > 1 ? "s" : ""}</div>
             <div className="mt-2 flex flex-wrap gap-2">
               {results.map((n, i) => (
-                <span key={i} className="rounded-lg bg-accent px-3 py-1.5 font-display text-lg font-bold text-accent-foreground">{n}</span>
+                <span key={i} className="rounded-lg bg-primary px-3 py-1.5 font-display text-lg font-bold text-primary-foreground">{n}</span>
               ))}
             </div>
             <ResultActions

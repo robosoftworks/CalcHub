@@ -54,7 +54,7 @@ function SalesTaxPage() {
             key={m}
             onClick={() => setMode(m)}
             aria-pressed={mode === m}
-            className={`rounded-md px-3 py-2 text-sm font-semibold transition-smooth ${mode === m ? "bg-accent text-accent-foreground" : "border border-border bg-card hover:bg-secondary"}`}
+            className={`rounded-md px-3 py-2 text-sm font-semibold transition-smooth ${mode === m ? "bg-primary text-primary-foreground" : "border border-border bg-card hover:bg-secondary"}`}
           >
             {m === "forward" ? "Price → total" : "Total → price"}
           </button>
@@ -90,7 +90,7 @@ function SalesTaxPage() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return <label className="block"><span className="mb-1.5 block text-sm font-semibold">{label}</span>{children}</label>;
 }
-function cls() { return "w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent"; }
+function cls() { return "w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary"; }
 
 const faqs = [
   { q: "What's the difference between the two modes?", a: "'Price → total' takes a pre-tax price and adds tax on top. 'Total → price' does the reverse: given a tax-included total (like a receipt), it works backward to find the original pre-tax price — useful for expense reports or verifying a receipt." },

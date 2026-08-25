@@ -26,7 +26,7 @@ function PctPage() {
     <CalcLayout slug="percentage-calculator" title="Percentage Calculator" tagline="Solve any percentage problem instantly — % of, % change, % increase/decrease and discount." faqs={faqs} article={<Article />}>
       <div className="mb-5 flex flex-wrap gap-2">
         {TABS.map((t) => (
-          <button key={t} onClick={() => setTab(t)} aria-pressed={tab === t} className={`rounded-md px-3 py-2 text-sm font-semibold transition-smooth ${tab === t ? "bg-accent text-accent-foreground" : "border border-border bg-card hover:bg-secondary"}`}>{t}</button>
+          <button key={t} onClick={() => setTab(t)} aria-pressed={tab === t} className={`rounded-md px-3 py-2 text-sm font-semibold transition-smooth ${tab === t ? "bg-primary text-primary-foreground" : "border border-border bg-card hover:bg-secondary"}`}>{t}</button>
         ))}
       </div>
       {tab === "X% of Y" && <PercentOf />}
@@ -41,9 +41,9 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   return <label className="block"><span className="mb-1.5 block text-sm font-semibold">{label}</span>{children}</label>;
 }
 function num(v: string) { const n = parseFloat(v); return isFinite(n) ? n : NaN; }
-function inputCls() { return "w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-accent"; }
+function inputCls() { return "w-full rounded-md border border-border bg-background px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary"; }
 function ResultCard({ children, share, onReset }: { children: React.ReactNode; share: string; onReset?: () => void }) {
-  return <div className="mt-6 rounded-2xl bg-surface p-6 text-surface-foreground"><div className="font-display text-3xl font-bold text-accent md:text-4xl">{children}</div><ResultActions text={share} title="Percentage result" onReset={onReset} /></div>;
+  return <div className="mt-6 rounded-2xl bg-surface p-6 text-surface-foreground"><div className="font-display text-3xl font-bold text-primary md:text-4xl">{children}</div><ResultActions text={share} title="Percentage result" onReset={onReset} /></div>;
 }
 
 function PercentOf() {

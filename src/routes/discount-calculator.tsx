@@ -56,7 +56,7 @@ function DiscountPage() {
               onClick={() => setMode(m)}
               aria-pressed={mode === m}
               className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-smooth ${
-                mode === m ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground"
+                mode === m ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
               }`}
             >{m === "percent" ? "% off → price" : "Two prices → %"}</button>
           ))}
@@ -80,7 +80,7 @@ function DiscountPage() {
             <input
               type="range" min={0} max={100} value={percent}
               onChange={(e) => setPercent(Number(e.target.value))}
-              className="w-full accent-[oklch(0.89_0.18_100)]"
+              className="w-full primary-[oklch(0.89_0.18_100)]"
             />
           </div>
         ) : (

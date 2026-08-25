@@ -28,7 +28,7 @@ function NotFoundComponent() {
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-bold text-accent-foreground transition-colors hover:opacity-90"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-bold text-primary-foreground transition-colors hover:opacity-90"
           >
             Back to CalcHub
           </Link>
@@ -53,7 +53,7 @@ export const Route = createRootRoute({
           "Free online calculators: GPA, age, percentage, profit & loss, currency converter and more. Fast, accurate, mobile-friendly.",
       },
       { name: "author", content: "CalcHub" },
-      { name: "theme-color", content: "#FFDE14" },
+      { name: "theme-color", content: "#e27828" },
       { name: "format-detection", content: "telephone=no" },
       { property: "og:site_name", content: "CalcHub" },
       { property: "og:type", content: "website" },
@@ -73,6 +73,12 @@ export const Route = createRootRoute({
       { rel: "preload", as: "style", href: FONTS_HREF },
       { rel: "stylesheet", href: FONTS_HREF, media: "print" },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/favicon-16.png",
+      },
       {
         rel: "icon",
         type: "image/png",
@@ -111,7 +117,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <body>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded-md focus:bg-accent focus:px-3 focus:py-2 focus:text-sm focus:font-bold focus:text-accent-foreground"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded-md focus:bg-primary focus:px-3 focus:py-2 focus:text-sm focus:font-bold focus:text-primary-foreground"
         >
           Skip to content
         </a>

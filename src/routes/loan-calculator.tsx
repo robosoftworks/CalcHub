@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
@@ -111,27 +111,51 @@ function Article() {
     <>
       <h2>How the loan / EMI calculator works</h2>
       <p>
-        Whether you’re shopping for a mortgage, financing a car or refinancing a personal loan, the EMI
-        calculator tells you exactly what you’ll pay every month — and how much of that is interest.
+        Every EMI (Equated Monthly Installment) is made of two ingredients in a ratio that shifts every
+        month: principal (what you actually borrowed) and interest (the lender's fee for the risk). Early in
+        a loan you're mostly paying interest; late in a loan you're mostly paying down principal. The EMI
+        stays flat — what's inside it changes completely.
       </p>
-      <h3>The EMI formula</h3>
+      <h3>The formula, in plain language</h3>
+      <pre className="rounded-md bg-muted p-3 text-sm">EMI = P × r × (1 + r)ⁿ ÷ ((1 + r)ⁿ − 1)</pre>
       <p>
-        EMI = <code>P × r × (1 + r)ⁿ ÷ ((1 + r)ⁿ − 1)</code>, where <em>P</em> is the loan amount, <em>r</em>
-        is the monthly interest rate (annual rate ÷ 12 ÷ 100), and <em>n</em> is the number of months. With a
-        zero-interest loan the formula simplifies to <code>P ÷ n</code>.
+        <em>P</em> is the amount you borrow, <em>r</em> is your monthly interest rate (annual rate ÷ 12 ÷
+        100), and <em>n</em> is the number of monthly payments. The <code>(1 + r)ⁿ</code> term is doing the
+        real work — it compounds the interest forward over every remaining month, which is why a longer
+        tenure costs so much more than the sticker rate suggests. With a zero-interest loan, the formula
+        collapses to a plain <code>P ÷ n</code> — no compounding, no surprise.
       </p>
-      <h3>Why the total interest matters</h3>
+      <h3>Worked example</h3>
       <p>
-        Two loans with the same EMI can have very different total interest if their tenures differ. Always
-        compare both the monthly payment <em>and</em> the total interest paid over the full term before
-        choosing a loan.
+        Finance a <strong>$22,400</strong> used truck at <strong>6.4% APR for 5 years</strong> (60 months).
+        Monthly rate = 6.4 ÷ 12 ÷ 100 = 0.005333. EMI ≈ <strong>$437/month</strong>. Over 60 months you'll
+        pay $26,234 total — <strong>$3,834 in interest</strong> on top of the truck's price. Stretch the same
+        loan to 7 years (84 months) instead, and the EMI drops to about $332/month, but total interest rises
+        to roughly <strong>$5,450</strong> — about 42% more, for a "cheaper-looking" monthly number.
       </p>
-      <h3>Tips to reduce interest</h3>
+      <h3>Common mistake: chasing the lowest EMI</h3>
+      <p>
+        The EMI is the number dealerships lead with because it's the smallest, most reassuring figure on the
+        page. But two loans with an identical EMI can have wildly different total costs if their tenures
+        differ, and a "lower monthly payment" almost always means a longer tenure — which means more total
+        interest, not less. Always compare total interest paid over the full term, not just the monthly
+        number, before signing.
+      </p>
+      <h3>Reducing what you actually pay</h3>
       <ul>
-        <li>Choose a shorter tenure if your budget allows — total interest drops sharply.</li>
-        <li>Make occasional principal prepayments — even small ones cut years off your loan.</li>
-        <li>Refinance if market rates fall by more than ~1% from your current rate.</li>
+        <li>A shorter tenure raises the EMI but cuts total interest sharply — run both scenarios through the calculator before deciding.</li>
+        <li>Occasional lump-sum prepayments reduce principal directly, which shrinks every future interest calculation.</li>
+        <li>
+          If you're financing a home, the <Link to="/mortgage-calculator">Mortgage Calculator</Link> uses
+          the same underlying math with property tax and insurance layered in, and the{" "}
+          <Link to="/compound-interest-calculator">Compound Interest Calculator</Link> is worth trying to
+          see how much a prepayment could have grown if invested instead.
+        </li>
       </ul>
+      <p>
+        See also: <Link to="/blog/$slug" params={{ slug: "how-to-calculate-your-car-loan-emi-before-you-sign" }}>How to Calculate Your Car Loan EMI Before You Sign</Link>{" "}
+        for a full pre-purchase walkthrough, including how exchange rates affect an imported vehicle's real cost.
+      </p>
     </>
   );
 }

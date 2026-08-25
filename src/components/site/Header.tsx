@@ -63,7 +63,7 @@ export function Header() {
               <NavigationMenuLink asChild>
                 <Link
                   to="/blog"
-                  activeProps={{ className: "bg-accent text-accent-foreground" }}
+                  activeProps={{ className: "bg-primary text-primary-foreground" }}
                   className="inline-flex h-9 w-max items-center justify-center rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-smooth hover:bg-secondary hover:text-foreground"
                 >
                   Blog
@@ -77,7 +77,7 @@ export function Header() {
           <button
             onClick={openSearch}
             aria-label="Search calculators"
-            className="hidden items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm text-muted-foreground transition-smooth hover:border-accent hover:text-foreground sm:flex"
+            className="hidden items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm text-muted-foreground transition-smooth hover:border-primary hover:text-foreground sm:flex"
           >
             <Search className="h-3.5 w-3.5" />
             <span>Search…</span>

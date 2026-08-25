@@ -24,10 +24,10 @@ function CalcCard({ c }: { c: CalcMeta }) {
   return (
     <Link
       to={c.path}
-      className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-smooth hover:-translate-y-1 hover:border-accent hover:shadow-elegant"
+      className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition-smooth hover:-translate-y-1 hover:border-primary hover:shadow-elegant"
     >
-      <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-accent/10 blur-2xl transition-smooth group-hover:bg-accent/40" aria-hidden />
-      <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent text-2xl text-accent-foreground">{c.emoji}</div>
+      <div className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-primary/10 blur-2xl transition-smooth group-hover:bg-primary/40" aria-hidden />
+      <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary text-2xl text-primary-foreground">{c.emoji}</div>
       <h3 className="mt-4 text-lg font-bold">{c.title}</h3>
       <p className="mt-1 text-sm text-muted-foreground">{c.description}</p>
       <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold">
@@ -41,9 +41,9 @@ function CalcChip({ c }: { c: CalcMeta }) {
   return (
     <Link
       to={c.path}
-      className="group flex items-center gap-2.5 rounded-xl border border-border bg-card p-3 transition-smooth hover:-translate-y-0.5 hover:border-accent hover:shadow-elegant"
+      className="group flex items-center gap-2.5 rounded-xl border border-border bg-card p-3 transition-smooth hover:-translate-y-0.5 hover:border-primary hover:shadow-elegant"
     >
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent text-lg text-accent-foreground">{c.emoji}</span>
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-primary text-lg text-primary-foreground">{c.emoji}</span>
       <span className="min-w-0">
         <span className="block truncate text-sm font-semibold">{c.title}</span>
         <span className="block truncate text-xs text-muted-foreground">{c.short}</span>
@@ -75,16 +75,16 @@ function Home() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-surface text-surface-foreground">
-        <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-accent/30 blur-3xl" aria-hidden />
-        <div className="absolute -bottom-40 -left-20 h-96 w-96 rounded-full bg-accent/10 blur-3xl" aria-hidden />
+        <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-primary/30 blur-3xl" aria-hidden />
+        <div className="absolute -bottom-40 -left-20 h-96 w-96 rounded-full bg-primary/10 blur-3xl" aria-hidden />
         <div className="container-tight relative grid gap-10 py-16 md:grid-cols-2 md:py-24">
           <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/15 px-3 py-1 text-xs font-medium text-accent">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary">
               <Sparkles className="h-3.5 w-3.5" /> {calculators.length} free tools, zero sign-up
             </span>
             <h1 className="mt-5 font-display text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
               Every calculator <br />
-              you’ll <span className="bg-accent px-2 text-accent-foreground">ever need</span>.
+              you’ll <span className="bg-primary px-2 text-primary-foreground">ever need</span>.
             </h1>
             <p className="mt-5 max-w-lg text-base text-surface-foreground/75 md:text-lg">
               Free, lightning-fast tools for students, professionals and everyday math — from mortgages to
@@ -93,7 +93,7 @@ function Home() {
             <div className="mt-7 flex flex-wrap gap-3">
               <button
                 onClick={() => window.dispatchEvent(new Event("calchub:open-search"))}
-                className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-bold text-accent-foreground transition-smooth hover:scale-[1.02] hover:shadow-glow"
+                className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition-smooth hover:scale-[1.02] hover:shadow-glow"
               >
                 <Command className="h-4 w-4" /> Search all tools
               </button>
@@ -120,7 +120,7 @@ function Home() {
                   <Link
                     key={c.slug}
                     to={c.path}
-                    className="group rounded-xl bg-white/5 p-4 transition-smooth hover:bg-accent hover:text-accent-foreground"
+                    className="group rounded-xl bg-white/5 p-4 transition-smooth hover:bg-primary hover:text-primary-foreground"
                   >
                     <div className="text-2xl">{c.emoji}</div>
                     <div className="mt-2 font-semibold">{c.title}</div>
@@ -144,7 +144,7 @@ function Home() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search calculators (BMI, GPA, loan, tip…)"
-              className="w-full rounded-full border border-input bg-background py-2.5 pl-10 pr-4 text-sm shadow-sm focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
+              className="w-full rounded-full border border-input bg-background py-2.5 pl-10 pr-4 text-sm shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
             />
           </label>
         </div>
@@ -210,7 +210,7 @@ function Home() {
                 return (
                   <div key={cat.name} id={cat.name.toLowerCase().replace(/\s+/g, "-")}>
                     <div className="mb-4 flex items-center gap-3">
-                      <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent text-xl text-accent-foreground">{cat.emoji}</span>
+                      <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-xl text-primary-foreground">{cat.emoji}</span>
                       <div>
                         <h3 className="text-xl font-bold tracking-tight">{cat.name}</h3>
                         <p className="text-xs text-muted-foreground">{cat.blurb}</p>
@@ -236,7 +236,7 @@ function Home() {
             { i: <Sparkles className="h-5 w-5" />, t: "Built for SEO & speed", d: "Lightweight, mobile-first, scoring 90+ on PageSpeed across all tools." },
           ].map((b) => (
             <div key={b.t} className="rounded-2xl border border-border bg-background p-6">
-              <div className="grid h-10 w-10 place-items-center rounded-lg bg-accent text-accent-foreground">{b.i}</div>
+              <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary text-primary-foreground">{b.i}</div>
               <h3 className="mt-4 font-bold">{b.t}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{b.d}</p>
             </div>
@@ -256,7 +256,7 @@ function Home() {
               key={p.slug}
               to="/blog/$slug"
               params={{ slug: p.slug }}
-              className="group rounded-2xl border border-border bg-card p-6 transition-smooth hover:-translate-y-0.5 hover:border-accent hover:shadow-elegant"
+              className="group rounded-2xl border border-border bg-card p-6 transition-smooth hover:-translate-y-0.5 hover:border-primary hover:shadow-elegant"
             >
               <div className="text-xs uppercase tracking-wider text-muted-foreground">{p.date}</div>
               <h3 className="mt-2 text-lg font-bold leading-snug">{p.title}</h3>
