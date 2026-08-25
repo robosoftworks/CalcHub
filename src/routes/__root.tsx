@@ -9,6 +9,7 @@ import appCss from "../styles.css?url";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { CookieConsent } from "@/components/site/CookieConsent";
+import { CommandPalette } from "@/components/site/CommandPalette";
 import { JsonLd } from "@/components/site/JsonLd";
 import { SITE_URL, absUrl } from "@/lib/site";
 
@@ -147,6 +148,7 @@ function RootComponent() {
       </main>
       <Footer />
       <CookieConsent />
+      <CommandPalette />
       <JsonLd data={[orgLd, siteLd]} />
     </div>
   );

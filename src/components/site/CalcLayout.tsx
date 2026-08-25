@@ -1,9 +1,11 @@
 import { Link } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { calculators } from "@/lib/calculators";
 import { AdSlot } from "./AdSlot";
 import { RelatedCalculators } from "./RelatedCalculators";
 import { JsonLd } from "./JsonLd";
 import { absUrl } from "@/lib/site";
+import { recordVisit } from "@/lib/recent";
 
 type Props = {
   slug: string;
@@ -17,6 +19,10 @@ type Props = {
 export function CalcLayout({ slug, title, tagline, children, article, faqs }: Props) {
   const current = calculators.find((c) => c.slug === slug);
   const preferred = current?.related ?? [];
+
+  useEffect(() => {
+    recordVisit(slug);
+  }, [slug]);
 
   return (
     <div className="container-tight py-10 md:py-14">
