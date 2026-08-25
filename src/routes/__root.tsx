@@ -5,7 +5,6 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { Analytics } from "@vercel/analytics/react";
 import appCss from "../styles.css?url";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
@@ -150,7 +149,6 @@ function RootComponent() {
       <Footer />
       <CookieConsent />
       <JsonLd data={[orgLd, siteLd]} />
-      <Analytics />
     </div>
   );
 }

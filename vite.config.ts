@@ -6,6 +6,6 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// Deployed on Vercel — pin the Nitro preset explicitly rather than relying
+// Deployed on Netlify — pin the Nitro preset explicitly rather than relying
 // on zero-config auto-detection.
-export default defineConfig({ nitro: { preset: "vercel" } });
+export default defineConfig({ nitro: { preset: "netlify" } });
