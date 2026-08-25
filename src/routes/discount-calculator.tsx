@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/discount-calculator")({
   head: () => ({
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/discount-calculator")({
       { property: "og:title", content: "Discount Calculator — Sale Price" },
       { property: "og:description", content: "Find what you save and what you pay during any sale." },
     ],
+    links: [{ rel: "canonical", href: absUrl("/discount-calculator") }],
   }),
   component: DiscountPage,
 });
@@ -75,7 +77,7 @@ function DiscountPage() {
               <span className="text-sm font-bold">{percent}%</span>
             </div>
             <input
-              type="range" min={0} max={90} value={percent}
+              type="range" min={0} max={100} value={percent}
               onChange={(e) => setPercent(Number(e.target.value))}
               className="w-full accent-[oklch(0.89_0.18_100)]"
             />
@@ -96,12 +98,12 @@ function DiscountPage() {
           <div className="mt-1 text-4xl font-bold tracking-tight md:text-5xl">{fmt(result.sale)}</div>
           <div className="mt-4 grid grid-cols-2 gap-4 border-t border-white/10 pt-4 text-sm">
             <div>
-              <div className="text-surface-foreground/60">You save</div>
-              <div className="text-lg font-semibold">{fmt(result.savings)}</div>
+              <div className="text-surface-foreground/60">{result.savings >= 0 ? "You save" : "Price increase"}</div>
+              <div className="text-lg font-semibold">{fmt(Math.abs(result.savings))}</div>
             </div>
             <div>
-              <div className="text-surface-foreground/60">Discount</div>
-              <div className="text-lg font-semibold">{fmt(result.percent)}%</div>
+              <div className="text-surface-foreground/60">{result.percent >= 0 ? "Discount" : "Markup"}</div>
+              <div className="text-lg font-semibold">{fmt(Math.abs(result.percent))}%</div>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ExternalLink } from "@/components/site/ExternalLink";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -7,6 +8,7 @@ export const Route = createFileRoute("/privacy")({
       { title: "Privacy Policy | CalcHub" },
       { name: "description", content: "How CalcHub collects, uses and protects your data — including cookies, analytics and advertising." },
     ],
+    links: [{ rel: "canonical", href: absUrl("/privacy") }],
   }),
   component: Privacy,
 });

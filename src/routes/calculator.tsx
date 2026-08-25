@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/calculator")({
   head: () => ({
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/calculator")({
       { property: "og:title", content: "Online Calculator — Basic & Scientific" },
       { property: "og:description", content: "Fast, free calculator for everyday math, with full scientific mode and keyboard input." },
     ],
+    links: [{ rel: "canonical", href: absUrl("/calculator") }],
   }),
   component: CalculatorPage,
 });

@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { blogPosts, calculators } from "@/lib/calculators";
 import { RelatedCalculators } from "@/components/site/RelatedCalculators";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -20,6 +21,7 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:type", content: "article" },
         { property: "article:published_time", content: post.date },
       ],
+      links: [{ rel: "canonical", href: absUrl(`/blog/${post.slug}`) }],
     };
   },
   notFoundComponent: () => (

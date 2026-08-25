@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/bmi-calculator")({
   head: () => ({
@@ -11,7 +12,7 @@ export const Route = createFileRoute("/bmi-calculator")({
       { property: "og:title", content: "BMI Calculator — Body Mass Index" },
       { property: "og:description", content: "Calculate your BMI and check your healthy weight range instantly." },
     ],
-    links: [{ rel: "canonical", href: "https://calchub.app/bmi-calculator" }],
+    links: [{ rel: "canonical", href: absUrl("/bmi-calculator") }],
   }),
   component: BmiPage,
 });
@@ -35,12 +36,12 @@ function BmiPage() {
 
   const bmi = useMemo(() => {
     if (unit === "metric") {
-      if (!height || !weight) return 0;
+      if (height <= 0 || weight <= 0) return 0;
       const m = height / 100;
       return weight / (m * m);
     }
     const totalIn = feet * 12 + inches;
-    if (!totalIn || !lbs) return 0;
+    if (totalIn <= 0 || lbs <= 0) return 0;
     return (lbs / (totalIn * totalIn)) * 703;
   }, [unit, height, weight, feet, inches, lbs]);
 

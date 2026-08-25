@@ -70,7 +70,6 @@ export const Route = createRootRoute({
       },
       { rel: "preload", as: "style", href: FONTS_HREF },
       { rel: "stylesheet", href: FONTS_HREF, media: "print" },
-      { rel: "canonical", href: SITE_URL },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       {
         rel: "icon",

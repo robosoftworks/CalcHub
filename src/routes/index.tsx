@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { calculators, blogPosts } from "@/lib/calculators";
 import { ArrowRight, Sparkles, Zap, Shield, Search } from "lucide-react";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "CalcHub — Free Online Calculators" },
       { property: "og:description", content: "Free, fast, accurate calculators for students and professionals. Used by 1M+ people worldwide." },
     ],
+    links: [{ rel: "canonical", href: absUrl("/") }],
   }),
   component: Home,
 });

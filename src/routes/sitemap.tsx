@@ -13,6 +13,7 @@ export const Route = createFileRoute("/sitemap")({
       { property: "og:description", content: "Complete index of CalcHub calculators, guides and blog posts." },
       { name: "robots", content: "index,follow" },
     ],
+    links: [{ rel: "canonical", href: absUrl("/sitemap") }],
   }),
   component: SitemapPage,
 });

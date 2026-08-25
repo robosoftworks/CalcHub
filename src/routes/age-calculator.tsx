@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/age-calculator")({
   head: () => ({
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/age-calculator")({
       { property: "og:title", content: "Age Calculator — Years, Months & Days" },
       { property: "og:description", content: "Find your exact age, days lived and time until your next birthday." },
     ],
+    links: [{ rel: "canonical", href: absUrl("/age-calculator") }],
   }),
   component: AgePage,
 });

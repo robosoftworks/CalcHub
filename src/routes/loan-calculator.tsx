@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/loan-calculator")({
   head: () => ({
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/loan-calculator")({
       { property: "og:title", content: "Loan / EMI Calculator" },
       { property: "og:description", content: "Calculate monthly EMI, total interest and total payment for any loan." },
     ],
+    links: [{ rel: "canonical", href: absUrl("/loan-calculator") }],
   }),
   component: LoanPage,
 });
@@ -26,9 +28,9 @@ function LoanPage() {
   const [years, setYears] = useState(5);
 
   const { emi, totalInterest, totalPayment } = useMemo(() => {
-    const P = amount;
-    const r = rate / 12 / 100;
-    const n = years * 12;
+    const P = Math.max(0, amount);
+    const r = Math.max(0, rate) / 12 / 100;
+    const n = Math.max(0, years) * 12;
     if (!P || !n) return { emi: 0, totalInterest: 0, totalPayment: 0 };
     const emi = r === 0 ? P / n : (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
     const totalPayment = emi * n;

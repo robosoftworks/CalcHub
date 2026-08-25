@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Mail, MessageCircle } from "lucide-react";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -17,6 +18,7 @@ export const Route = createFileRoute("/contact")({
         content: "Reach the CalcHub team — we read every message.",
       },
     ],
+    links: [{ rel: "canonical", href: absUrl("/contact") }],
   }),
   component: Contact,
 });

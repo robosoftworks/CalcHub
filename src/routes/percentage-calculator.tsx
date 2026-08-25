@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/percentage-calculator")({
   head: () => ({
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/percentage-calculator")({
       { property: "og:title", content: "Percentage Calculator" },
       { property: "og:description", content: "All percentage formulas in one fast tool." },
     ],
+    links: [{ rel: "canonical", href: absUrl("/percentage-calculator") }],
   }),
   component: PctPage,
 });
@@ -68,7 +70,11 @@ function WhatPercent() {
         <Field label="X"><input type="number" value={x} onChange={(e) => setX(e.target.value)} className={inputCls()} /></Field>
         <Field label="is what % of Y"><input type="number" value={y} onChange={(e) => setY(e.target.value)} className={inputCls()} /></Field>
       </div>
-      {ok && <ResultCard share={`${x} is ${r.toFixed(2)}% of ${y}`} onReset={() => { setX("50"); setY("200"); }}>{x} is <span className="text-surface-foreground">{r.toFixed(2)}%</span> of {y}</ResultCard>}
+      {ok ? (
+        <ResultCard share={`${x} is ${r.toFixed(2)}% of ${y}`} onReset={() => { setX("50"); setY("200"); }}>{x} is <span className="text-surface-foreground">{r.toFixed(2)}%</span> of {y}</ResultCard>
+      ) : (
+        <p className="mt-6 rounded-md border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">Y can’t be 0 — enter a non-zero value to divide by.</p>
+      )}
     </>
   );
 }
@@ -82,7 +88,11 @@ function Change() {
         <Field label="Original value"><input type="number" value={a} onChange={(e) => setA(e.target.value)} className={inputCls()} /></Field>
         <Field label="New value"><input type="number" value={b} onChange={(e) => setB(e.target.value)} className={inputCls()} /></Field>
       </div>
-      {ok && <ResultCard share={`Change from ${a} to ${b} = ${r.toFixed(2)}%`} onReset={() => { setA("80"); setB("100"); }}>{r >= 0 ? "↑ Increase" : "↓ Decrease"} of <span className="text-surface-foreground">{Math.abs(r).toFixed(2)}%</span></ResultCard>}
+      {ok ? (
+        <ResultCard share={`Change from ${a} to ${b} = ${r.toFixed(2)}%`} onReset={() => { setA("80"); setB("100"); }}>{r >= 0 ? "↑ Increase" : "↓ Decrease"} of <span className="text-surface-foreground">{Math.abs(r).toFixed(2)}%</span></ResultCard>
+      ) : (
+        <p className="mt-6 rounded-md border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">Original value can’t be 0 — enter a non-zero starting value.</p>
+      )}
     </>
   );
 }

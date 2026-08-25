@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
@@ -6,6 +7,7 @@ export const Route = createFileRoute("/terms")({
       { title: "Terms & Conditions | CalcHub" },
       { name: "description", content: "Terms governing your use of CalcHub’s free online calculators and content." },
     ],
+    links: [{ rel: "canonical", href: absUrl("/terms") }],
   }),
   component: Terms,
 });

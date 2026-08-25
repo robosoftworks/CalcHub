@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -8,6 +9,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About CalcHub" },
       { property: "og:description", content: "The story behind the calculator hub used by 1M+ people worldwide." },
     ],
+    links: [{ rel: "canonical", href: absUrl("/about") }],
   }),
   component: About,
 });

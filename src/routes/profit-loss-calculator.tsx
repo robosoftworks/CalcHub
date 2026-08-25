@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/profit-loss-calculator")({
   head: () => ({
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/profit-loss-calculator")({
       { property: "og:title", content: "Profit & Loss Calculator" },
       { property: "og:description", content: "Calculate profit, loss, margin and markup with one click." },
     ],
+    links: [{ rel: "canonical", href: absUrl("/profit-loss-calculator") }],
   }),
   component: PnlPage,
 });
@@ -19,8 +21,8 @@ function PnlPage() {
   const [cost, setCost] = useState("100");
   const [sell, setSell] = useState("130");
 
-  const c = parseFloat(cost) || 0;
-  const s = parseFloat(sell) || 0;
+  const c = Math.max(0, parseFloat(cost) || 0);
+  const s = Math.max(0, parseFloat(sell) || 0);
   const diff = s - c;
   const pct = c ? (diff / c) * 100 : 0;
   const margin = s ? (diff / s) * 100 : 0;

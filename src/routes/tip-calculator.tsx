@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/tip-calculator")({
   head: () => ({
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/tip-calculator")({
       { property: "og:title", content: "Tip Calculator — Bill & Split" },
       { property: "og:description", content: "Quickly calculate tip, total and per-person share for any bill." },
     ],
+    links: [{ rel: "canonical", href: absUrl("/tip-calculator") }],
   }),
   component: TipPage,
 });

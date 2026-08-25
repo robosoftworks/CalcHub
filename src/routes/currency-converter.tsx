@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
 import { ArrowLeftRight, RefreshCw } from "lucide-react";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/currency-converter")({
   head: () => ({
@@ -12,6 +13,7 @@ export const Route = createFileRoute("/currency-converter")({
       { property: "og:title", content: "Currency Converter — Live Rates" },
       { property: "og:description", content: "Convert between 150+ currencies with up-to-date exchange rates." },
     ],
+    links: [{ rel: "canonical", href: absUrl("/currency-converter") }],
   }),
   component: CurrencyPage,
 });

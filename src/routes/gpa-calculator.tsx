@@ -3,6 +3,7 @@ import { useState } from "react";
 import { CalcLayout } from "@/components/site/CalcLayout";
 import { ResultActions } from "@/components/site/ResultActions";
 import { Plus, Trash2 } from "lucide-react";
+import { absUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/gpa-calculator")({
   head: () => ({
@@ -12,6 +13,7 @@ export const Route = createFileRoute("/gpa-calculator")({
       { property: "og:title", content: "GPA Calculator — 4.0 & 5.0 Scale" },
       { property: "og:description", content: "Free GPA calculator for high school and college. Unlimited subjects and credit hours." },
     ],
+    links: [{ rel: "canonical", href: absUrl("/gpa-calculator") }],
   }),
   component: GpaPage,
 });
@@ -34,7 +36,7 @@ function GpaPage() {
   const grades = SCALES[scale];
   let totalPts = 0, totalCredits = 0;
   rows.forEach((r) => {
-    const c = parseFloat(r.credits) || 0;
+    const c = Math.max(0, parseFloat(r.credits) || 0);
     const pt = grades[r.grade] ?? 0;
     totalPts += c * pt;
     totalCredits += c;
